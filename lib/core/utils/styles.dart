@@ -73,4 +73,9 @@ class Styles {
       fontSize: 17,
       fontStyle: FontStyle.italic,
       color: const Color(0xff1C2121));
+
+  static TextStyle styleBold40 = GoogleFonts.nunitoSans(
+      fontWeight: FontWeight.bold,
+      fontSize: 40,
+      color: const Color(0xff1C2121));
 }
