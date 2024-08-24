@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:up_todo/core/utils/colors.dart';
 import 'package:up_todo/core/utils/styles.dart';
 
+import '../../../../core/utils/app_router.dart';
 import '../../data/models/on_boardring_model.dart';
 import 'custom_smooth_indicator.dart';
 
@@ -39,6 +41,7 @@ class OnBoardringIndicatorAndTextAndButton extends StatelessWidget {
             InkWell(
               onTap: () {
                 if (pageController.page?.toInt() == 2) {
+                  GoRouter.of(context).go(AppRouter.homeView);
                 } else {
                   pageController.nextPage(
                       duration: const Duration(milliseconds: 500),
@@ -49,7 +52,7 @@ class OnBoardringIndicatorAndTextAndButton extends StatelessWidget {
                 height: 56,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                    color: AppColors.onBoardingButtonColor,
+                    color: AppColors.secondaryColor,
                     borderRadius: BorderRadius.circular(16)),
                 child: Center(
                     child: Text(onBoardringModel.buttonName,

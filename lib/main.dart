@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:up_todo/core/utils/app_router.dart';
 
 import 'core/utils/colors.dart';
+import 'features/home/presentation/manager/bottom_navigation/bottom_navigation_cubit.dart';
 import 'features/onboarding/presentation/manager/on_boardring/on_boardring_cubit.dart';
 
 void main() {
@@ -14,8 +15,11 @@ class UpTodo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => OnBoardringCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => OnBoardringCubit()),
+        BlocProvider(create: (context) => BottomNavigationCubit()),
+      ],
       child: MaterialApp.router(
           theme: ThemeData(
               scaffoldBackgroundColor: AppColors.onBoardingBackgroundColor),

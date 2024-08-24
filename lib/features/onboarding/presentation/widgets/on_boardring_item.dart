@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:up_todo/core/utils/app_router.dart';
 import 'package:up_todo/core/utils/assets.dart';
 import 'package:up_todo/core/utils/colors.dart';
 import 'package:up_todo/core/utils/styles.dart';
@@ -31,8 +33,11 @@ class OnBoardringItem extends StatelessWidget {
           Positioned(
               right: 24.0,
               top: 60,
-              child:
-                  InkWell(child: Text('Skip', style: Styles.styleSemiBold14))),
+              child: InkWell(
+                  onTap: () {
+                    GoRouter.of(context).go(AppRouter.homeView);
+                  },
+                  child: Text('Skip', style: Styles.styleSemiBold14))),
         if (onBoardringModel.image != Assets.imagesOnBoardingOne)
           Positioned(
               left: 24.0,
@@ -47,7 +52,7 @@ class OnBoardringItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Icon(Icons.arrow_back_ios,
-                        color: AppColors.onBoardingButtonColor),
+                        color: AppColors.secondaryColor),
                     Text('Back', style: Styles.styleSemiBold14)
                   ],
                 ),
