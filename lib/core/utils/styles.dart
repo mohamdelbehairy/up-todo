@@ -78,4 +78,7 @@ class Styles {
       fontWeight: FontWeight.bold,
       fontSize: 40,
       color: const Color(0xff1C2121));
+
+  static TextStyle styleSaveButton = GoogleFonts.nunitoSans(
+      fontWeight: FontWeight.w400, fontSize: 14.58, color: Colors.white);
 }

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:up_todo/core/utils/app_router.dart';
 import 'package:up_todo/core/utils/assets.dart';
-import 'package:up_todo/core/utils/colors.dart';
 import 'package:up_todo/core/utils/styles.dart';
 import 'package:up_todo/features/onboarding/data/models/on_boardring_model.dart';
+import '../../../../core/widgets/custom_back_widget.dart';
 import 'on_boardring_image.dart';
 import 'on_boardring_indicator_and_text_and_button.dart';
 
@@ -42,22 +42,12 @@ class OnBoardringItem extends StatelessWidget {
           Positioned(
               left: 24.0,
               top: 58,
-              child: InkWell(
-                onTap: () {
-                  pageController.previousPage(
+              child: CustomBackWidget(
+                  onTap: () => pageController.previousPage(
                       duration: const Duration(milliseconds: 500),
-                      curve: Curves.easeIn);
-                },
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Icon(Icons.arrow_back_ios,
-                        color: AppColors.secondaryColor),
-                    Text('Back', style: Styles.styleSemiBold14)
-                  ],
-                ),
-              ))
+                      curve: Curves.easeIn)))
       ],
     );
   }
 }
+
