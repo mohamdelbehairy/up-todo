@@ -81,4 +81,9 @@ class Styles {
 
   static TextStyle styleSaveButton = GoogleFonts.nunitoSans(
       fontWeight: FontWeight.w400, fontSize: 14.58, color: Colors.white);
+
+  static TextStyle styleRegular15 = GoogleFonts.nunitoSans(
+      fontWeight: FontWeight.w400,
+      fontSize: 15,
+      color: const Color(0xff1C2121));
 }

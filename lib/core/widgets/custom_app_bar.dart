@@ -19,7 +19,10 @@ class CustomAppBar extends StatelessWidget {
         InkWell(
             onTap: appBarModel.onTap,
             child: CustomSvg(
-                svgModel: SvgModel(image: Assets.imagesCircleSetting)))
+                svgModel: SvgModel(
+                  height: 22,
+                  width: 22,
+                  image: Assets.imagesCircleSetting)))
       ],
     );
   }

@@ -4,7 +4,7 @@ import 'package:up_todo/core/utils/styles.dart';
 import 'package:up_todo/core/widgets/custom_app_bar.dart';
 
 import 'no_recent_search_widget.dart';
-import 'search_text_field.dart';
+import '../../../../core/widgets/search_text_field.dart';
 
 class SearchViewBody extends StatelessWidget {
   const SearchViewBody({super.key});
@@ -26,4 +26,3 @@ class SearchViewBody extends StatelessWidget {
     );
   }
 }
-
