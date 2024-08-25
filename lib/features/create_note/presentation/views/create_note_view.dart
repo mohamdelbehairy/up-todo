@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../core/widgets/build_view.dart';
 import '../widgets/create_note_view_body.dart';
 
 class CreateNoteView extends StatelessWidget {
@@ -6,14 +7,7 @@ class CreateNoteView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Color(0xffF2F2F6),
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24),
-          child: CreateNoteViewBody(),
-        ),
-      ),
-    );
+    return const BuildView(child: CreateNoteViewBody());
   }
 }
+

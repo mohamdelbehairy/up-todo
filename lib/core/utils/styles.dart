@@ -53,7 +53,7 @@ class Styles {
       fontSize: 8.9,
       color: const Color(0xff1C2121));
 
-  static TextStyle styleSemiBold26 = GoogleFonts.nunitoSans(
+  static TextStyle styleSemiBold16 = GoogleFonts.nunitoSans(
       fontWeight: FontWeight.w600,
       fontSize: 16.52,
       color: const Color(0xff828282));
@@ -69,7 +69,7 @@ class Styles {
       color: const Color(0xff1C2121));
 
   static TextStyle styleItalic17 = GoogleFonts.nunitoSans(
-      fontWeight: FontWeight.w400,
+      // fontWeight: FontWeight.w400,
       fontSize: 17,
       fontStyle: FontStyle.italic,
       color: const Color(0xff1C2121));

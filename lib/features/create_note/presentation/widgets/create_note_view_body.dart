@@ -38,14 +38,14 @@ class _CreateNoteViewBodyState extends State<CreateNoteViewBody> {
         const SizedBox(height: 24),
         CreateNoteAppBar(onTap: () {}),
         const SizedBox(height: 24),
-        CreateNoteTextFieldField(
+        CreateNoteTextField(
             textFieldModel:
                 TextFieldModel(title: 'Page Title', controller: title)),
         const SizedBox(height: 16),
         if (title.text.isNotEmpty && title.text.length >= 5)
-          CreateNoteTextFieldField(
+          CreateNoteTextField(
               textFieldModel: TextFieldModel(
-                  title: 'Page Body', maxLines: 10, controller: body)),
+                  title: 'Page Body', maxLines: 5, controller: body)),
       ],
     );
   }

@@ -2,6 +2,10 @@
 class Assets {
   Assets._();
   
+  /// Assets for imagesCircleSetting
+  /// assets/images/circle_setting.svg
+  static const String imagesCircleSetting = "assets/images/circle_setting.svg";
+
   /// Assets for imagesCreateNote
   /// assets/images/create_note.svg
   static const String imagesCreateNote = "assets/images/create_note.svg";

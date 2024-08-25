@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:up_todo/core/utils/assets.dart';
+import 'package:up_todo/features/search/presentation/views/search_view.dart';
 
 import '../../../data/models/bottom_navigation_model.dart';
 part 'bottom_navigation_state.dart';
@@ -20,7 +21,7 @@ class BottomNavigationCubit extends Cubit<BottomNavigationState> {
   List views = [
     const Scaffold(backgroundColor: Colors.white),
     const Scaffold(backgroundColor: Colors.yellow),
-    const Scaffold(backgroundColor: Colors.blue),
+    const SearchView(),
     const Scaffold(backgroundColor: Colors.black),
   ];
 

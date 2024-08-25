@@ -4,8 +4,8 @@ import 'package:up_todo/core/utils/styles.dart';
 import '../../data/models/text_field_model.dart';
 import 'custom_text_field.dart';
 
-class CreateNoteTextFieldField extends StatelessWidget {
-  const CreateNoteTextFieldField({super.key, required this.textFieldModel});
+class CreateNoteTextField extends StatelessWidget {
+  const CreateNoteTextField({super.key, required this.textFieldModel});
   final TextFieldModel textFieldModel;
 
   @override

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:up_todo/core/utils/colors.dart';
+import 'package:up_todo/core/utils/styles.dart';
 import 'package:up_todo/features/create_note/data/models/text_field_model.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -9,6 +10,7 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      style: Styles.styleBold26.copyWith(fontSize: 20),
       maxLines: textFieldModel.maxLines,
       controller: textFieldModel.controller,
       cursorColor: AppColors.secondaryColor,
