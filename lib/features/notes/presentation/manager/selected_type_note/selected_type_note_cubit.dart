@@ -36,4 +36,16 @@ class SelectedTypeNoteCubit extends Cubit<SelectedTypeNoteState> {
     selectedIndex = index;
     emit(SelectedTypeNoteChanged());
   }
+
+  int gridViewAvtiveIndex = -1;
+  void gradeViewChangeIndex(int index) {
+    gridViewAvtiveIndex = index;
+    emit(ChangeIndex());
+  }
+
+  int listViewAvtiveIndex = -1;
+  void listViewChangeIndex(int index) {
+    listViewAvtiveIndex = index;
+    emit(ChangeIndex());
+  }
 }

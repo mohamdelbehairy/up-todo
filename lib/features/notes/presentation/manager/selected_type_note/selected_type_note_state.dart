@@ -5,3 +5,5 @@ sealed class SelectedTypeNoteState {}
 final class SelectedTypeNoteInitial extends SelectedTypeNoteState {}
 
 final class SelectedTypeNoteChanged extends SelectedTypeNoteState {}
+
+final class ChangeIndex extends SelectedTypeNoteState {}

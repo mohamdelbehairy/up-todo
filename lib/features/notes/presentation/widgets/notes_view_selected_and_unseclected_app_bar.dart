@@ -28,6 +28,8 @@ class NoteViewSelectedAppBar extends StatelessWidget {
       children: [
         CustomBackWidget(onTap: () {
           context.read<SelectedTypeNoteCubit>().changeSelectedTypeNote(-1);
+          context.read<SelectedTypeNoteCubit>().listViewChangeIndex(-1);
+          context.read<SelectedTypeNoteCubit>().gradeViewChangeIndex(-1);
         }),
         InkWell(
             onTap: () {},

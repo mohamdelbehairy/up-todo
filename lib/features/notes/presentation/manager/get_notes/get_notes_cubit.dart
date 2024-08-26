@@ -16,18 +16,13 @@ class GetNotesCubit extends Cubit<GetNotesState> {
 
   void getAllNotes() {
     allNotes = _getNotesRepo.getAllNotes();
+    recentNotes = allNotes.isEmpty
+        ? []
+        : allNotes.length <= 4
+            ? allNotes
+            : allNotes.sublist(allNotes.length - 4);
     emit(GetAllNotesSuccess());
   }
 
-  int gridViewAvtiveIndex = -1;
-  void gradeViewChangeIndex(int index) {
-    gridViewAvtiveIndex = index;
-    emit(ChangeIndex());
-  }
 
-  int listViewAvtiveIndex = -1;
-  void listViewChangeIndex(int index) {
-    listViewAvtiveIndex = index;
-    emit(ChangeIndex());
-  }
 }

@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:up_todo/features/notes/data/models/note_model.dart';
 
 import '../../data/models/note_item_model.dart';
-import '../manager/get_notes/get_notes_cubit.dart';
-import 'show_note_half_and_full_item.dart';
+import '../manager/selected_type_note/selected_type_note_cubit.dart';
+import 'show_note_item.dart';
 
 class ShowNotesListView extends StatelessWidget {
   const ShowNotesListView({super.key, required this.notes});
@@ -19,15 +19,21 @@ class ShowNotesListView extends StatelessWidget {
       itemBuilder: (context, index) {
         return Padding(
             padding: const EdgeInsets.only(bottom: 8),
-            child: ShowNoteHalfAndFullItem(
+            child: ShowNoteItem(
               noteItemModel: NoteItemModel(
                   width: double.infinity,
                   note: notes[index],
                   onTap: () {
-                    context.read<GetNotesCubit>().listViewChangeIndex(index);
-                    context.read<GetNotesCubit>().gradeViewChangeIndex(-1);
+                    context
+                        .read<SelectedTypeNoteCubit>()
+                        .listViewChangeIndex(index);
+                    context
+                        .read<SelectedTypeNoteCubit>()
+                        .gradeViewChangeIndex(-1);
                   },
-                  isActive: context.read<GetNotesCubit>().listViewAvtiveIndex ==
+                  isActive: context
+                          .read<SelectedTypeNoteCubit>()
+                          .listViewAvtiveIndex ==
                       index),
             ));
       },

@@ -25,6 +25,8 @@ class SelectedTypeNoteWidget extends StatelessWidget {
               highlightColor: Colors.transparent,
               onTap: () {
                 selectedTypeNote.changeSelectedTypeNote(index);
+                selectedTypeNote.listViewChangeIndex(-1);
+                selectedTypeNote.gradeViewChangeIndex(-1);
               },
               child: SelectedTypeNoteItem(
                   isActive: selectedTypeNote.selectedIndex == index,
