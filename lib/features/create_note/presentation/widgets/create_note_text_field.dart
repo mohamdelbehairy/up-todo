@@ -18,7 +18,8 @@ class CreateNoteTextField extends StatelessWidget {
         CustomTextField(
             textFieldModel: TextFieldModel(
                 maxLines: textFieldModel.maxLines,
-                controller: textFieldModel.controller)),
+                controller: textFieldModel.controller,
+                validator: textFieldModel.validator)),
       ],
     );
   }

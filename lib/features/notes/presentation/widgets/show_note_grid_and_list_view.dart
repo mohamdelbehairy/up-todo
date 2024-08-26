@@ -39,7 +39,7 @@ class ShowNotesGridAndListView extends StatelessWidget {
           children: [
             ShowNotesGridView(notes: gridNotes),
             const SizedBox(height: 12),
-            ShowNotesListView(note: listNotes),
+            ShowNotesListView(notes: listNotes),
           ],
         );
       },

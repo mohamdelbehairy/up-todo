@@ -1,143 +1,33 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:up_todo/features/notes/data/models/note_model.dart';
+import 'package:up_todo/features/notes/data/repos/get_notes_repo.dart';
 
 part 'get_notes_state.dart';
 
 class GetNotesCubit extends Cubit<GetNotesState> {
-  GetNotesCubit() : super(GetNotesInitial());
+  GetNotesCubit(this._getNotesRepo) : super(GetNotesInitial());
+  final GetNotesRepo _getNotesRepo;
 
-  List<NoteModel> recentNotes = [
-    NoteModel(
-        title: 'Getting Started',
-        body:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam cum ligula justo.Nisi, consectetur elementum.'),
-    NoteModel(
-        title: 'UX Design',
-        body:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam cum ligula justo.Nisi, consectetur elementum.'),
-    NoteModel(
-        title: 'Important',
-        body:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam cum ligula justo.Nisi, consectetur elementum.'),
-    NoteModel(
-        title: 'Important',
-        body:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam cum ligula justo.Nisi, consectetur elementum.'),
-  ];
-  List<NoteModel> allNotes = [
-    NoteModel(
-        title: 'Getting Started',
-        body:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam cum ligula justo.Nisi, consectetur elementum.'),
-    NoteModel(
-        title: 'UX Design',
-        body:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam cum ligula justo.Nisi, consectetur elementum.'),
-    NoteModel(
-        title: 'Important',
-        body:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam cum ligula justo.Nisi, consectetur elementum.'),
-    NoteModel(
-        title: 'Important',
-        body:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam cum ligula justo.Nisi, consectetur elementum.'),
-    NoteModel(
-        title: 'Getting Started',
-        body:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam cum ligula justo.Nisi, consectetur elementum.'),
-    NoteModel(
-        title: 'UX Design',
-        body:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam cum ligula justo.Nisi, consectetur elementum.'),
-    NoteModel(
-        title: 'Important',
-        body:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam cum ligula justo.Nisi, consectetur elementum.'),
-    NoteModel(
-        title: 'Important',
-        body:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam cum ligula justo.Nisi, consectetur elementum.'),
-  ];
-  List<NoteModel> favouriteNotes = [
-    NoteModel(
-        title: 'Getting Started',
-        body:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam cum ligula justo.Nisi, consectetur elementum.'),
-    NoteModel(
-        title: 'UX Design',
-        body:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam cum ligula justo.Nisi, consectetur elementum.'),
-    NoteModel(
-        title: 'Important',
-        body:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam cum ligula justo.Nisi, consectetur elementum.'),
-    NoteModel(
-        title: 'Important',
-        body:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam cum ligula justo.Nisi, consectetur elementum.'),
-    NoteModel(
-        title: 'Getting Started',
-        body:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam cum ligula justo.Nisi, consectetur elementum.'),
-    NoteModel(
-        title: 'UX Design',
-        body:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam cum ligula justo.Nisi, consectetur elementum.'),
-    NoteModel(
-        title: 'Important',
-        body:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam cum ligula justo.Nisi, consectetur elementum.'),
-    NoteModel(
-        title: 'Important',
-        body:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam cum ligula justo.Nisi, consectetur elementum.'),
-  ];
-  List<NoteModel> hiddenNotes = [
-    NoteModel(
-        title: 'Getting Started',
-        body:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam cum ligula justo.Nisi, consectetur elementum.'),
-    NoteModel(
-        title: 'UX Design',
-        body:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam cum ligula justo.Nisi, consectetur elementum.'),
-    NoteModel(
-        title: 'Important',
-        body:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam cum ligula justo.Nisi, consectetur elementum.'),
-    NoteModel(
-        title: 'Important',
-        body:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam cum ligula justo.Nisi, consectetur elementum.'),
-    NoteModel(
-        title: 'Getting Started',
-        body:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam cum ligula justo.Nisi, consectetur elementum.'),
-    NoteModel(
-        title: 'UX Design',
-        body:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam cum ligula justo.Nisi, consectetur elementum.'),
-    NoteModel(
-        title: 'Important',
-        body:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam cum ligula justo.Nisi, consectetur elementum.'),
-    NoteModel(
-        title: 'Important',
-        body:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam cum ligula justo.Nisi, consectetur elementum.'),
-  ];
-  List<NoteModel> trashNotes = [
-    NoteModel(
-        title: 'Getting Started',
-        body:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam cum ligula justo.Nisi, consectetur elementum.'),
-    NoteModel(
-        title: 'UX Design',
-        body:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam cum ligula justo.Nisi, consectetur elementum.'),
-    NoteModel(
-        title: 'Important',
-        body:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam cum ligula justo.Nisi, consectetur elementum.'),
-  ];
+  List<NoteModel> recentNotes = [];
+  List<NoteModel> allNotes = [];
+  List<NoteModel> favouriteNotes = [];
+  List<NoteModel> hiddenNotes = [];
+  List<NoteModel> trashNotes = [];
+
+  void getAllNotes() {
+    allNotes = _getNotesRepo.getAllNotes();
+    emit(GetAllNotesSuccess());
+  }
+
+  int gridViewAvtiveIndex = -1;
+  void gradeViewChangeIndex(int index) {
+    gridViewAvtiveIndex = index;
+    emit(ChangeIndex());
+  }
+
+  int listViewAvtiveIndex = -1;
+  void listViewChangeIndex(int index) {
+    listViewAvtiveIndex = index;
+    emit(ChangeIndex());
+  }
 }

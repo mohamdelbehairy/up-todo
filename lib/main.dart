@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:up_todo/core/utils/app_router.dart';
+import 'package:up_todo/core/utils/function/init_hive.dart';
+import 'package:up_todo/features/notes/data/repos/get_notes_repo_impl.dart';
+import 'package:up_todo/features/notes/presentation/manager/get_notes/get_notes_cubit.dart';
 
 import 'core/utils/bloc_observer.dart';
 import 'core/utils/colors.dart';
 import 'features/home/presentation/manager/bottom_navigation/bottom_navigation_cubit.dart';
 import 'features/onboarding/presentation/manager/on_boardring/on_boardring_cubit.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = SimpleBlocObserver();
+  await initHive();
   runApp(const UpTodo());
 }
 
@@ -21,6 +26,9 @@ class UpTodo extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => OnBoardringCubit()),
         BlocProvider(create: (context) => BottomNavigationCubit()),
+        BlocProvider(
+            create: (context) =>
+                GetNotesCubit(GetNotesRepoImpl())..getAllNotes())
       ],
       child: MaterialApp.router(
           theme: ThemeData(scaffoldBackgroundColor: AppColors.backgroundColor),

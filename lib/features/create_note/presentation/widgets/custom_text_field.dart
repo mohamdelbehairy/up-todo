@@ -9,14 +9,13 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
       style: Styles.styleBold26.copyWith(fontSize: 20),
       maxLines: textFieldModel.maxLines,
       controller: textFieldModel.controller,
       cursorColor: AppColors.secondaryColor,
-      decoration: const InputDecoration(
-        border: InputBorder.none,
-      ),
+      validator: textFieldModel.validator,
+      decoration: const InputDecoration(border: InputBorder.none),
     );
   }
 }
