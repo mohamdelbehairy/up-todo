@@ -12,28 +12,22 @@ class ShowNotesGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var selectedIndex = context.watch<SelectedTypeNoteCubit>();
     return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       itemCount: notes.length,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          mainAxisSpacing: 8,
-          // mainAxisExtent: 140,
-          crossAxisSpacing: 8),
+          crossAxisCount: 2, mainAxisSpacing: 8, crossAxisSpacing: 8),
       itemBuilder: (context, index) {
         return ShowNoteItem(
           noteItemModel: NoteItemModel(
               note: notes[index],
               onTap: () {
-                context
-                    .read<SelectedTypeNoteCubit>()
-                    .gradeViewChangeIndex(index);
-                context.read<SelectedTypeNoteCubit>().listViewChangeIndex(-1);
+                selectedIndex.gradeViewChangeIndex(index);
+                selectedIndex.listViewChangeIndex(-1);
               },
-              isActive:
-                  context.read<SelectedTypeNoteCubit>().gridViewAvtiveIndex ==
-                      index),
+              isActive: selectedIndex.gridViewAvtiveIndex == index),
         );
       },
     );

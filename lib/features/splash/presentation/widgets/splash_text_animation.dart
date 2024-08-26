@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:up_todo/core/utils/app_router.dart';
+import 'package:up_todo/core/utils/constants.dart';
 import 'custom_slide_text.dart';
 
 class SplashTextAnimation extends StatefulWidget {
@@ -54,10 +56,17 @@ class _SplashTextAnimationState extends State<SplashTextAnimation>
     _animationController.forward();
   }
 
-  void navigation() {
+  void navigation() async {
+    final prefs = await SharedPreferences.getInstance();
+    final onBoarding = prefs.getString(Constants.kOnBoarding);
     Future.delayed(const Duration(seconds: 4), () {
-      // ignore: use_build_context_synchronously
-      GoRouter.of(context).go(AppRouter.onBoardingView);
+      if (onBoarding == null) {
+        // ignore: use_build_context_synchronously
+        GoRouter.of(context).go(AppRouter.onBoardingView);
+      } else {
+        // ignore: use_build_context_synchronously
+        GoRouter.of(context).go(AppRouter.homeView);
+      }
     });
   }
 }

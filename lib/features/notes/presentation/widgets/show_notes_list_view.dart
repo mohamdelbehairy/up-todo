@@ -12,6 +12,7 @@ class ShowNotesListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var selectedIndex = context.watch<SelectedTypeNoteCubit>();
     return ListView.builder(
       physics: const NeverScrollableScrollPhysics(),
       itemCount: notes.length,
@@ -24,17 +25,10 @@ class ShowNotesListView extends StatelessWidget {
                   width: double.infinity,
                   note: notes[index],
                   onTap: () {
-                    context
-                        .read<SelectedTypeNoteCubit>()
-                        .listViewChangeIndex(index);
-                    context
-                        .read<SelectedTypeNoteCubit>()
-                        .gradeViewChangeIndex(-1);
+                    selectedIndex.listViewChangeIndex(index);
+                    selectedIndex.gradeViewChangeIndex(-1);
                   },
-                  isActive: context
-                          .read<SelectedTypeNoteCubit>()
-                          .listViewAvtiveIndex ==
-                      index),
+                  isActive: selectedIndex.listViewAvtiveIndex == index),
             ));
       },
     );
