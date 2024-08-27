@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:up_todo/core/utils/function/show_custom_dialog.dart';
 import 'package:up_todo/features/notes/data/models/note_item_model.dart';
 import 'package:up_todo/features/notes/data/models/note_model.dart';
 import 'package:up_todo/features/notes/presentation/manager/selected_type_note/selected_type_note_cubit.dart';
@@ -26,6 +27,9 @@ class ShowNotesGridView extends StatelessWidget {
               onTap: () {
                 selectedIndex.gradeViewChangeIndex(index);
                 selectedIndex.listViewChangeIndex(-1);
+              },
+              onLongTap: () {
+                showCustomDialog(context);
               },
               isActive: selectedIndex.gridViewAvtiveIndex == index),
         );

@@ -28,6 +28,7 @@ class ShowNotesListView extends StatelessWidget {
                     selectedIndex.listViewChangeIndex(index);
                     selectedIndex.gradeViewChangeIndex(-1);
                   },
+                  onLongTap: () {},
                   isActive: selectedIndex.listViewAvtiveIndex == index),
             ));
       },

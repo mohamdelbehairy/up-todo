@@ -14,6 +14,7 @@ class ShowAllNotes extends StatelessWidget {
       splashColor: Colors.transparent,
       highlightColor: Colors.transparent,
       onTap: noteItemModel.onTap,
+      onLongPress: noteItemModel.onLongTap,
       child: Container(
         width: noteItemModel.width,
         padding: const EdgeInsets.all(16),
@@ -40,6 +41,7 @@ class ShowRecentNotes extends StatelessWidget {
       splashColor: Colors.transparent,
       highlightColor: Colors.transparent,
       onTap: noteItemModel.onTap,
+      onLongPress: noteItemModel.onLongTap,
       child: Container(
         width: noteItemModel.width,
         padding: const EdgeInsets.all(16),
@@ -66,6 +68,7 @@ class ShowFavoriteNotes extends StatelessWidget {
       splashColor: Colors.transparent,
       highlightColor: Colors.transparent,
       onTap: noteItemModel.onTap,
+      onLongPress: noteItemModel.onLongTap,
       child: Container(
         width: noteItemModel.width,
         padding: const EdgeInsets.all(16),
@@ -92,6 +95,7 @@ class ShowHiddenNotes extends StatelessWidget {
       splashColor: Colors.transparent,
       highlightColor: Colors.transparent,
       onTap: noteItemModel.onTap,
+      onLongPress: noteItemModel.onLongTap,
       child: Container(
         width: noteItemModel.width,
         padding: const EdgeInsets.all(16),
@@ -118,6 +122,7 @@ class ShowTrashNotes extends StatelessWidget {
       splashColor: Colors.transparent,
       highlightColor: Colors.transparent,
       onTap: noteItemModel.onTap,
+      onLongPress: noteItemModel.onLongTap,
       child: Container(
         width: noteItemModel.width,
         padding: const EdgeInsets.all(16),
