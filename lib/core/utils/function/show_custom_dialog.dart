@@ -7,39 +7,51 @@ import 'package:up_todo/core/utils/assets.dart';
 import 'package:up_todo/core/utils/colors.dart';
 import 'package:up_todo/features/notes/data/models/note_model.dart';
 import 'package:up_todo/features/notes/presentation/manager/get_notes/get_notes_cubit.dart';
-import 'package:up_todo/features/notes/presentation/manager/store_types_note/store_types_note_cubit.dart';
+import 'package:up_todo/features/notes/presentation/manager/selected_type_note/selected_type_note_cubit.dart';
 
+import '../../../features/notes/presentation/manager/remove_notes/remove_notes_cubit.dart';
+import '../../../features/notes/presentation/manager/store_types_note/store_types_note_cubit.dart';
 import '../../models/custom_dialog_model.dart';
 import '../../widgets/custom_dialog_item.dart';
 
-void showCustomDialog(BuildContext context, {required NoteModel noteModel}) {
+void showCustomDialog(BuildContext context,
+    {required NoteModel noteModel, required int index}) {
   var getNotes = context.read<GetNotesCubit>();
+  var selectedIndex = context.read<SelectedTypeNoteCubit>().selectedIndex;
+  var isFavourite = getNotes.favouriteNotes.contains(noteModel);
+  var removeNote = context.read<RemoveNotesCubit>();
   List<CustomDialogModel> items = [
     CustomDialogModel(
-        title: 'Favourite',
+        title: isFavourite ? 'Unfavourite' : 'Favourite',
         backgroundColor: const Color(0xffF7CE45),
         image: Assets.imagesFavourite,
         onTap: () async {
           GoRouter.of(context).pop();
-          await context
-              .read<StoreTypesNoteCubit>()
-              .storeFavouriteNotes(noteModel: noteModel);
+          if (isFavourite) {
+            await removeNote.removeFavouriteNotes(noteID: index);
+          } else {
+            await context
+                .read<StoreTypesNoteCubit>()
+                .storeFavouriteNotes(noteModel: noteModel);
+          }
           getNotes.getFavouriteNotes();
         }),
-    CustomDialogModel(
-        title: 'Hidden',
-        backgroundColor: const Color(0xff4E94F8),
-        image: Assets.imagesHidden,
-        onTap: () {
-          log('hidden');
-        }),
-    CustomDialogModel(
-        title: 'Trash',
-        backgroundColor: const Color(0xffEB4D3D),
-        image: Assets.imagesTrash,
-        onTap: () {
-          log('trash');
-        })
+    if (selectedIndex <= 0)
+      CustomDialogModel(
+          title: 'Hidden',
+          backgroundColor: const Color(0xff4E94F8),
+          image: Assets.imagesHidden,
+          onTap: () {
+            log('hidden');
+          }),
+    if (selectedIndex <= 0)
+      CustomDialogModel(
+          title: 'Trash',
+          backgroundColor: const Color(0xffEB4D3D),
+          image: Assets.imagesTrash,
+          onTap: () {
+            log('trash');
+          })
   ];
   showGeneralDialog(
     context: context,
@@ -53,7 +65,7 @@ void showCustomDialog(BuildContext context, {required NoteModel noteModel}) {
           color: Colors.transparent,
           child: Container(
             margin: const EdgeInsets.symmetric(horizontal: 20),
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
                 color: AppColors.backgroundColor,
                 borderRadius: BorderRadius.circular(10)),
