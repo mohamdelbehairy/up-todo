@@ -33,4 +33,15 @@ class StoreTypesNoteCubit extends Cubit<StoreTypesNoteState> {
       log('error from storeFavouriteNotes: $e');
     }
   }
+
+  Future<void> storeTrashNotes({required NoteModel noteModel}) async {
+    emit(StoreTypesNoteLoading());
+    try {
+      await _storeNotesRepo.storeTrashNotes(noteModel: noteModel);
+      emit(StoreTrashNoteSuccess());
+    } catch (e) {
+      emit(StoreTypesNoteFailure(errorMessage: e.toString()));
+      log('error from storeFavouriteNotes: $e');
+    }
+  }
 }

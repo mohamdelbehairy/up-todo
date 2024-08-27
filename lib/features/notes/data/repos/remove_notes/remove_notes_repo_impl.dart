@@ -22,4 +22,10 @@ class RemoveNotesRepoImpl extends RemoveNotesRepo {
     var box = Hive.box<NoteModel>(Constants.kHiddenNotes);
     await box.deleteAt(noteID);
   }
+  
+  @override
+  Future<void> removeTrashNotes({required int noteID}) async{
+    var box = Hive.box<NoteModel>(Constants.kTrashNotes);
+    await box.deleteAt(noteID);
+  }
 }

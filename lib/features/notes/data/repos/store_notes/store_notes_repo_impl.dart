@@ -23,7 +23,7 @@ class StoreNotesRepoImpl extends StoreNotesRepo {
   }
 
   @override
-  Future<void> storeTrashNotes() {
-    throw UnimplementedError();
+  Future<void> storeTrashNotes({required NoteModel noteModel}) async {
+    await storeNoteMethod(noteModel: noteModel, boxName: Constants.kTrashNotes);
   }
 }

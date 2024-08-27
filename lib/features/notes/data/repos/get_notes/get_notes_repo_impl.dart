@@ -17,11 +17,11 @@ class GetNotesRepoImpl extends GetNotesRepo {
 
   @override
   List<NoteModel> getHiddenNotes() {
-     return getNotesMethod(Constants.kHiddenNotes);
+    return getNotesMethod(Constants.kHiddenNotes);
   }
 
   @override
   List<NoteModel> getTrashNotes() {
-    throw UnimplementedError();
+    return getNotesMethod(Constants.kTrashNotes);
   }
 }

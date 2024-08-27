@@ -11,3 +11,5 @@ final class RemoveFavouriteNotesSuccess extends RemoveNotesState {}
 final class RemoveAllNotesSuccess extends RemoveNotesState {}
 
 final class RemoveHiddenNotesSuccess extends RemoveNotesState {}
+
+final class RemoveTrashNotesSuccess extends RemoveNotesState {}

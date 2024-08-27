@@ -33,4 +33,9 @@ class GetNotesCubit extends Cubit<GetNotesState> {
     hiddenNotes = _getNotesRepo.getHiddenNotes();
     emit(GetHiddenNotesSuccess());
   }
+
+  void getTrashNotes() {
+    trashNotes = _getNotesRepo.getTrashNotes();
+    emit(GetTrashNotesSuccess());
+  }
 }

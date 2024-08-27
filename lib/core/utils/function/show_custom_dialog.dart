@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -21,6 +19,7 @@ void showCustomDialog(BuildContext context,
   var selectedIndex = context.read<SelectedTypeNoteCubit>().selectedIndex;
   var isFavourite = getNotes.favouriteNotes.contains(noteModel);
   var isHidden = getNotes.hiddenNotes.contains(noteModel);
+  var isTrash = getNotes.trashNotes.contains(noteModel);
   var removeNote = context.read<RemoveNotesCubit>();
   List<CustomDialogModel> items = [
     if (selectedIndex != 2)
@@ -65,13 +64,37 @@ void showCustomDialog(BuildContext context,
             getNotes.getHiddenNotes();
             getNotes.getAllNotes();
           }),
-    if (selectedIndex <= 0)
+    if (selectedIndex != 1)
       CustomDialogModel(
-          title: 'Trash',
+          title: isTrash ? 'Restore' : 'Trash',
           backgroundColor: const Color(0xffEB4D3D),
           image: Assets.imagesTrash,
-          onTap: () {
-            log('trash');
+          onTap: () async {
+            GoRouter.of(context).pop();
+            if (!isTrash) {
+              await context
+                  .read<StoreTypesNoteCubit>()
+                  .storeTrashNotes(noteModel: noteModel);
+              if (isHidden) {
+                await removeNote.removeHiddenNotes(noteID: index);
+              } else {
+                await removeNote.removeAllNotes(noteID: index);
+              }
+
+              if (isFavourite) {
+                await removeNote.removeFavouriteNotes(noteID: index);
+              }
+            } else {
+              await context
+                  .read<StoreAllNotesCubit>()
+                  .storeAllNotes(noteModel: noteModel);
+              await removeNote.removeTrashNotes(noteID: index);
+            }
+
+            getNotes.getFavouriteNotes();
+            getNotes.getHiddenNotes();
+            getNotes.getTrashNotes();
+            getNotes.getAllNotes();
           })
   ];
   showGeneralDialog(

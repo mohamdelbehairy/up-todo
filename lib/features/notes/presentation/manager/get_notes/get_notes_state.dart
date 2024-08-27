@@ -9,3 +9,5 @@ final class GetAllNotesSuccess extends GetNotesState {}
 final class GetFavouriteNotesSuccess extends GetNotesState {}
 
 final class GetHiddenNotesSuccess extends GetNotesState {}
+
+final class GetTrashNotesSuccess extends GetNotesState {}

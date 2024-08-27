@@ -31,7 +31,8 @@ class UpTodo extends StatelessWidget {
             create: (context) => GetNotesCubit(GetNotesRepoImpl())
               ..getAllNotes()
               ..getFavouriteNotes()
-              ..getHiddenNotes()),
+              ..getHiddenNotes()
+              ..getTrashNotes()),
         BlocProvider(
           create: (context) => StoreAllNotesCubit(StoreNotesRepoImpl()),
         )

@@ -10,6 +10,8 @@ final class StoreFavouriteNoteSuccess extends StoreTypesNoteState {}
 
 final class StoreHiddenNoteSuccess extends StoreTypesNoteState {}
 
+final class StoreTrashNoteSuccess extends StoreTypesNoteState {}
+
 final class StoreTypesNoteFailure extends StoreTypesNoteState {
   final String errorMessage;
 
