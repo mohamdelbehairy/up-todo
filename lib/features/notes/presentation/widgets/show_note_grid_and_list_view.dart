@@ -34,6 +34,7 @@ class ShowNotesGridAndListView extends StatelessWidget {
             note.length > 2 ? note.sublist(0, 2) : note;
         final List<NoteModel> listNotes =
             note.length > 2 ? note.sublist(2) : [];
+
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

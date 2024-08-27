@@ -17,7 +17,7 @@ class GetNotesRepoImpl extends GetNotesRepo {
 
   @override
   List<NoteModel> getHiddenNotes() {
-    throw UnimplementedError();
+     return getNotesMethod(Constants.kHiddenNotes);
   }
 
   @override

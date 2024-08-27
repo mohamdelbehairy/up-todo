@@ -12,4 +12,14 @@ class RemoveNotesCubit extends Cubit<RemoveNotesState> {
     await _removeNotesRepo.removeFavouriteNotes(noteID: noteID);
     emit(RemoveFavouriteNotesSuccess());
   }
+
+   Future<void> removeAllNotes({required int noteID}) async {
+    await _removeNotesRepo.removeAllNotes(noteID: noteID);
+    emit(RemoveAllNotesSuccess());
+  }
+
+  Future<void> removeHiddenNotes({required int noteID}) async {
+    await _removeNotesRepo.removeHiddenNotes(noteID: noteID);
+    emit(RemoveHiddenNotesSuccess());
+  }
 }

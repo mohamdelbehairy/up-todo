@@ -10,4 +10,16 @@ class RemoveNotesRepoImpl extends RemoveNotesRepo {
     var box = Hive.box<NoteModel>(Constants.kFavouriteNotes);
     await box.deleteAt(noteID);
   }
+
+  @override
+  Future<void> removeAllNotes({required int noteID}) async {
+    var box = Hive.box<NoteModel>(Constants.kAllNotes);
+    await box.deleteAt(noteID);
+  }
+
+  @override
+  Future<void> removeHiddenNotes({required int noteID}) async {
+    var box = Hive.box<NoteModel>(Constants.kHiddenNotes);
+    await box.deleteAt(noteID);
+  }
 }

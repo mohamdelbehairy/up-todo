@@ -8,6 +8,8 @@ final class StoreTypesNoteLoading extends StoreTypesNoteState {}
 
 final class StoreFavouriteNoteSuccess extends StoreTypesNoteState {}
 
+final class StoreHiddenNoteSuccess extends StoreTypesNoteState {}
+
 final class StoreTypesNoteFailure extends StoreTypesNoteState {
   final String errorMessage;
 
