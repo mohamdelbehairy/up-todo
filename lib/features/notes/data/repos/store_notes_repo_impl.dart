@@ -11,8 +11,9 @@ class StoreNotesRepoImpl extends StoreNotesRepo {
   }
 
   @override
-  Future<void> storeFavouriteNotes() {
-    throw UnimplementedError();
+  Future<void> storeFavouriteNotes({required NoteModel noteModel}) async {
+    await storeNoteMethod(
+        noteModel: noteModel, boxName: Constants.kFavouriteNotes);
   }
 
   @override

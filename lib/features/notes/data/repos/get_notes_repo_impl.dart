@@ -1,18 +1,18 @@
-import 'package:hive/hive.dart';
 import 'package:up_todo/core/utils/constants.dart';
 import 'package:up_todo/features/notes/data/models/note_model.dart';
 import 'package:up_todo/features/notes/data/repos/get_notes_repo.dart';
 
+import '../../../../core/utils/function/get_notes_method.dart';
+
 class GetNotesRepoImpl extends GetNotesRepo {
   @override
   List<NoteModel> getAllNotes() {
-    var allNotes = Hive.box<NoteModel>(Constants.kAllNotes);
-    return allNotes.values.toList();
+    return getNotesMethod(Constants.kAllNotes);
   }
 
   @override
   List<NoteModel> getFavouriteNotes() {
-    throw UnimplementedError();
+    return getNotesMethod(Constants.kFavouriteNotes);
   }
 
   @override

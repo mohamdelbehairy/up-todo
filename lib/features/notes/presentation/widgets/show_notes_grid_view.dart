@@ -29,7 +29,7 @@ class ShowNotesGridView extends StatelessWidget {
                 selectedIndex.listViewChangeIndex(-1);
               },
               onLongTap: () {
-                showCustomDialog(context);
+                showCustomDialog(context, noteModel: notes[index]);
               },
               isActive: selectedIndex.gridViewAvtiveIndex == index),
         );

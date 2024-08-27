@@ -24,5 +24,8 @@ class GetNotesCubit extends Cubit<GetNotesState> {
     emit(GetAllNotesSuccess());
   }
 
-
+  void getFavouriteNotes() {
+    favouriteNotes = _getNotesRepo.getFavouriteNotes();
+    emit(GetFavouriteNotesSuccess());
+  }
 }

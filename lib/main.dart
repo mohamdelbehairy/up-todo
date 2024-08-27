@@ -26,8 +26,9 @@ class UpTodo extends StatelessWidget {
         BlocProvider(create: (context) => OnBoardringCubit()),
         BlocProvider(create: (context) => BottomNavigationCubit()),
         BlocProvider(
-            create: (context) =>
-                GetNotesCubit(GetNotesRepoImpl())..getAllNotes()),
+            create: (context) => GetNotesCubit(GetNotesRepoImpl())
+              ..getAllNotes()
+              ..getFavouriteNotes()),
       ],
       child: MaterialApp.router(
           theme: ThemeData(scaffoldBackgroundColor: AppColors.backgroundColor),
