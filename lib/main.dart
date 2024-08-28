@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:up_todo/core/utils/app_router.dart';
 import 'package:up_todo/core/utils/function/init_hive.dart';
 import 'package:up_todo/features/notes/data/repos/get_notes/get_notes_repo_impl.dart';
-import 'package:up_todo/features/notes/data/repos/store_notes/store_notes_repo_impl.dart';
+import 'package:up_todo/features/notes/data/repos/store_note/store_note_repo_impl.dart';
 import 'core/utils/bloc_observer.dart';
 import 'core/utils/colors.dart';
 import 'features/home/presentation/manager/bottom_navigation/bottom_navigation_cubit.dart';

@@ -10,6 +10,8 @@ import 'package:up_todo/features/notes/presentation/manager/selected_type_note/s
 
 import '../../../features/notes/presentation/manager/remove_note/remove_note_cubit.dart';
 import '../../../features/notes/presentation/manager/store_note/store_note_cubit.dart';
+import '../../../features/notes/presentation/manager/update_note/update_note_cubit.dart';
+import '../../../features/notes/presentation/widgets/function/on_tap_favourtie.dart';
 import '../../models/custom_dialog_model.dart';
 import '../../widgets/custom_dialog_item.dart';
 
@@ -21,22 +23,17 @@ void showCustomDialog(BuildContext context,
   var isHidden = getNotes.hiddenNotes.contains(noteModel);
   var isTrash = getNotes.trashNotes.contains(noteModel);
   var removeNote = context.read<RemoveNoteCubit>();
+  var updateNote = context.read<UpdateNoteCubit>();
+  var storeNote = context.read<StoreNoteCubit>();
   List<CustomDialogModel> items = [
     if (selectedIndex <= 1)
       CustomDialogModel(
-          title: isFavourite ? 'Unfavourite' : 'Favourite',
+          title: noteModel.isFavourite ? 'Unfavourite' : 'Favourite',
           backgroundColor: const Color(0xffF7CE45),
           image: Assets.imagesFavourite,
           onTap: () async {
-            GoRouter.of(context).pop();
-            if (isFavourite) {
-              await removeNote.removeNote(
-                  noteID: index, boxName: Constants.kFavouriteNotes);
-            } else {
-              await context.read<StoreNoteCubit>().storeNote(
-                  noteModel: noteModel, boxName: Constants.kFavouriteNotes);
-            }
-            getNotes.getFavouriteNotes();
+            await onTapFavourite(context, noteModel, removeNote, index,
+                updateNote, storeNote, getNotes);
           }),
     if (selectedIndex <= 0 || selectedIndex == 2)
       CustomDialogModel(
@@ -147,3 +144,5 @@ void showCustomDialog(BuildContext context,
     },
   );
 }
+
+

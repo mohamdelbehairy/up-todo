@@ -6,7 +6,6 @@ import 'package:up_todo/features/create_note/data/models/text_field_model.dart';
 import 'package:up_todo/features/notes/data/models/note_model.dart';
 import 'package:up_todo/features/notes/presentation/manager/get_notes/get_notes_cubit.dart';
 import 'package:up_todo/features/notes/presentation/manager/store_note/store_note_cubit.dart';
-import 'package:uuid/uuid.dart';
 import 'create_note_app_bar.dart';
 import 'create_note_text_field.dart';
 
@@ -60,10 +59,7 @@ class _CreateNoteViewBodyState extends State<CreateNoteViewBody> {
               if (formKey.currentState!.validate()) {
                 formKey.currentState!.save();
                 await context.read<StoreNoteCubit>().storeNote(
-                    noteModel: NoteModel(
-                        id: const Uuid().v4(),
-                        title: title.text,
-                        body: body.text),
+                    noteModel: NoteModel(title: title.text, body: body.text),
                     boxName: Constants.kAllNotes);
               }
             }),

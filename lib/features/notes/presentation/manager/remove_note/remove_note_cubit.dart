@@ -1,14 +1,14 @@
 import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:up_todo/features/notes/data/repos/remove_notes/remove_notes_repo.dart';
+import 'package:up_todo/features/notes/data/repos/remove_note/remove_note_repo.dart';
 
 part 'remove_note_state.dart';
 
 class RemoveNoteCubit extends Cubit<RemoveNoteState> {
   RemoveNoteCubit(this._removeNotesRepo) : super(RemoveNoteInitial());
 
-  final RemoveNotesRepo _removeNotesRepo;
+  final RemoveNoteRepo _removeNotesRepo;
 
   Future<void> removeNote(
       {required int noteID, required String boxName}) async {
