@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:up_todo/core/utils/constants.dart';
 import 'package:up_todo/features/notes/data/models/note_model.dart';
 import 'package:up_todo/features/notes/data/repos/get_notes/get_notes_repo.dart';
 
@@ -15,7 +16,7 @@ class GetNotesCubit extends Cubit<GetNotesState> {
   List<NoteModel> trashNotes = [];
 
   void getAllNotes() {
-    allNotes = _getNotesRepo.getAllNotes();
+    allNotes = _getNotesRepo.getNotes(Constants.kAllNotes);
     recentNotes = allNotes.isEmpty
         ? []
         : allNotes.length <= 4
@@ -25,17 +26,17 @@ class GetNotesCubit extends Cubit<GetNotesState> {
   }
 
   void getFavouriteNotes() {
-    favouriteNotes = _getNotesRepo.getFavouriteNotes();
+    favouriteNotes = _getNotesRepo.getNotes(Constants.kFavouriteNotes);
     emit(GetFavouriteNotesSuccess());
   }
 
   void getHiddenNotes() {
-    hiddenNotes = _getNotesRepo.getHiddenNotes();
+    hiddenNotes = _getNotesRepo.getNotes(Constants.kHiddenNotes);
     emit(GetHiddenNotesSuccess());
   }
 
   void getTrashNotes() {
-    trashNotes = _getNotesRepo.getTrashNotes();
+    trashNotes = _getNotesRepo.getNotes(Constants.kTrashNotes);
     emit(GetTrashNotesSuccess());
   }
 }

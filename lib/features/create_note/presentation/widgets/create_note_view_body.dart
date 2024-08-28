@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:up_todo/core/utils/constants.dart';
 import 'package:up_todo/features/create_note/data/models/text_field_model.dart';
-import 'package:up_todo/features/create_note/presentation/manager/store_all_notes/store_all_notes_cubit.dart';
 import 'package:up_todo/features/notes/data/models/note_model.dart';
 import 'package:up_todo/features/notes/presentation/manager/get_notes/get_notes_cubit.dart';
+import 'package:up_todo/features/notes/presentation/manager/store_note/store_note_cubit.dart';
 import 'package:uuid/uuid.dart';
 import 'create_note_app_bar.dart';
 import 'create_note_text_field.dart';
@@ -42,9 +43,9 @@ class _CreateNoteViewBodyState extends State<CreateNoteViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<StoreAllNotesCubit, StoreAllNotesState>(
+    return BlocListener<StoreNoteCubit, StoreNoteState>(
       listener: (context, state) {
-        if (state is StoreAllNotesSuccess) {
+        if (state is StoreNoteSuccess) {
           context.read<GetNotesCubit>().getAllNotes();
           GoRouter.of(context).pop(context);
         }
@@ -58,11 +59,12 @@ class _CreateNoteViewBodyState extends State<CreateNoteViewBody> {
             CreateNoteAppBar(onTap: () async {
               if (formKey.currentState!.validate()) {
                 formKey.currentState!.save();
-                await context.read<StoreAllNotesCubit>().storeAllNotes(
+                await context.read<StoreNoteCubit>().storeNote(
                     noteModel: NoteModel(
                         id: const Uuid().v4(),
                         title: title.text,
-                        body: body.text));
+                        body: body.text),
+                    boxName: Constants.kAllNotes);
               }
             }),
             const SizedBox(height: 24),

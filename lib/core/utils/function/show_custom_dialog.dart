@@ -3,13 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:up_todo/core/utils/assets.dart';
 import 'package:up_todo/core/utils/colors.dart';
-import 'package:up_todo/features/create_note/presentation/manager/store_all_notes/store_all_notes_cubit.dart';
+import 'package:up_todo/core/utils/constants.dart';
 import 'package:up_todo/features/notes/data/models/note_model.dart';
 import 'package:up_todo/features/notes/presentation/manager/get_notes/get_notes_cubit.dart';
 import 'package:up_todo/features/notes/presentation/manager/selected_type_note/selected_type_note_cubit.dart';
 
-import '../../../features/notes/presentation/manager/remove_notes/remove_notes_cubit.dart';
-import '../../../features/notes/presentation/manager/store_types_note/store_types_note_cubit.dart';
+import '../../../features/notes/presentation/manager/remove_note/remove_note_cubit.dart';
+import '../../../features/notes/presentation/manager/store_note/store_note_cubit.dart';
 import '../../models/custom_dialog_model.dart';
 import '../../widgets/custom_dialog_item.dart';
 
@@ -20,9 +20,9 @@ void showCustomDialog(BuildContext context,
   var isFavourite = getNotes.favouriteNotes.contains(noteModel);
   var isHidden = getNotes.hiddenNotes.contains(noteModel);
   var isTrash = getNotes.trashNotes.contains(noteModel);
-  var removeNote = context.read<RemoveNotesCubit>();
+  var removeNote = context.read<RemoveNoteCubit>();
   List<CustomDialogModel> items = [
-    if (selectedIndex != 2)
+    if (selectedIndex <= 1)
       CustomDialogModel(
           title: isFavourite ? 'Unfavourite' : 'Favourite',
           backgroundColor: const Color(0xffF7CE45),
@@ -30,11 +30,11 @@ void showCustomDialog(BuildContext context,
           onTap: () async {
             GoRouter.of(context).pop();
             if (isFavourite) {
-              await removeNote.removeFavouriteNotes(noteID: index);
+              await removeNote.removeNote(
+                  noteID: index, boxName: Constants.kFavouriteNotes);
             } else {
-              await context
-                  .read<StoreTypesNoteCubit>()
-                  .storeFavouriteNotes(noteModel: noteModel);
+              await context.read<StoreNoteCubit>().storeNote(
+                  noteModel: noteModel, boxName: Constants.kFavouriteNotes);
             }
             getNotes.getFavouriteNotes();
           }),
@@ -46,18 +46,19 @@ void showCustomDialog(BuildContext context,
           onTap: () async {
             GoRouter.of(context).pop();
             if (!isHidden) {
-              await context
-                  .read<StoreTypesNoteCubit>()
-                  .storeHiddenNotes(noteModel: noteModel);
-              await removeNote.removeAllNotes(noteID: index);
+              await context.read<StoreNoteCubit>().storeNote(
+                  noteModel: noteModel, boxName: Constants.kHiddenNotes);
+              await removeNote.removeNote(
+                  noteID: index, boxName: Constants.kAllNotes);
               if (isFavourite) {
-                await removeNote.removeFavouriteNotes(noteID: index);
+                await removeNote.removeNote(
+                    noteID: index, boxName: Constants.kFavouriteNotes);
               }
             } else {
-              await context
-                  .read<StoreAllNotesCubit>()
-                  .storeAllNotes(noteModel: noteModel);
-              await removeNote.removeHiddenNotes(noteID: index);
+              await context.read<StoreNoteCubit>().storeNote(
+                  noteModel: noteModel, boxName: Constants.kAllNotes);
+              await removeNote.removeNote(
+                  noteID: index, boxName: Constants.kHiddenNotes);
             }
 
             getNotes.getFavouriteNotes();
@@ -72,23 +73,25 @@ void showCustomDialog(BuildContext context,
           onTap: () async {
             GoRouter.of(context).pop();
             if (!isTrash) {
-              await context
-                  .read<StoreTypesNoteCubit>()
-                  .storeTrashNotes(noteModel: noteModel);
+              await context.read<StoreNoteCubit>().storeNote(
+                  noteModel: noteModel, boxName: Constants.kTrashNotes);
               if (isHidden) {
-                await removeNote.removeHiddenNotes(noteID: index);
+                await removeNote.removeNote(
+                    noteID: index, boxName: Constants.kHiddenNotes);
               } else {
-                await removeNote.removeAllNotes(noteID: index);
+                await removeNote.removeNote(
+                    noteID: index, boxName: Constants.kAllNotes);
               }
 
               if (isFavourite) {
-                await removeNote.removeFavouriteNotes(noteID: index);
+                await removeNote.removeNote(
+                    noteID: index, boxName: Constants.kFavouriteNotes);
               }
             } else {
-              await context
-                  .read<StoreAllNotesCubit>()
-                  .storeAllNotes(noteModel: noteModel);
-              await removeNote.removeTrashNotes(noteID: index);
+              await context.read<StoreNoteCubit>().storeNote(
+                  noteModel: noteModel, boxName: Constants.kAllNotes);
+              await removeNote.removeNote(
+                  noteID: index, boxName: Constants.kTrashNotes);
             }
 
             getNotes.getFavouriteNotes();
