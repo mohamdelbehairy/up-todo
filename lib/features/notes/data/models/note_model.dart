@@ -10,7 +10,15 @@ class NoteModel {
   final String body;
   @HiveField(2)
   final bool isFavourite;
+  @HiveField(3)
+  final bool isHidden;
+  @HiveField(4)
+  final bool isTrash;
 
   NoteModel(
-      {required this.title, required this.body, this.isFavourite = false});
+      {required this.title,
+      required this.body,
+      this.isFavourite = false,
+      this.isHidden = false,
+      this.isTrash = false});
 }

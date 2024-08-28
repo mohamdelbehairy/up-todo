@@ -3,10 +3,10 @@ import 'package:up_todo/core/models/svg_model.dart';
 import 'package:up_todo/core/utils/styles.dart';
 import 'package:up_todo/core/widgets/custom_svg.dart';
 
-import '../models/custom_dialog_model.dart';
+import '../../../../core/models/custom_dialog_model.dart';
 
-class CustomDialogItem extends StatelessWidget {
-  const CustomDialogItem({super.key, required this.customDialogModel});
+class ShowCustomDialogItem extends StatelessWidget {
+  const ShowCustomDialogItem({super.key, required this.customDialogModel});
   final CustomDialogModel customDialogModel;
 
   @override

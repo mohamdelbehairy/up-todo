@@ -1,30 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:up_todo/core/utils/assets.dart';
-import 'package:up_todo/core/utils/colors.dart';
-import 'package:up_todo/core/utils/constants.dart';
 import 'package:up_todo/features/notes/data/models/note_model.dart';
-import 'package:up_todo/features/notes/presentation/manager/get_notes/get_notes_cubit.dart';
-import 'package:up_todo/features/notes/presentation/manager/selected_type_note/selected_type_note_cubit.dart';
-
-import '../../../features/notes/presentation/manager/remove_note/remove_note_cubit.dart';
-import '../../../features/notes/presentation/manager/store_note/store_note_cubit.dart';
-import '../../../features/notes/presentation/manager/update_note/update_note_cubit.dart';
+import 'package:up_todo/features/notes/presentation/widgets/function/on_tap_hidden.dart';
+import '../../../features/notes/presentation/manager/selected_type_note/selected_type_note_cubit.dart';
 import '../../../features/notes/presentation/widgets/function/on_tap_favourtie.dart';
+import '../../../features/notes/presentation/widgets/function/on_tap_trash.dart';
+import '../../../features/notes/presentation/widgets/show_custom_dialog_body.dart';
 import '../../models/custom_dialog_model.dart';
-import '../../widgets/custom_dialog_item.dart';
 
 void showCustomDialog(BuildContext context,
     {required NoteModel noteModel, required int index}) {
-  var getNotes = context.read<GetNotesCubit>();
   var selectedIndex = context.read<SelectedTypeNoteCubit>().selectedIndex;
-  var isFavourite = getNotes.favouriteNotes.contains(noteModel);
-  var isHidden = getNotes.hiddenNotes.contains(noteModel);
-  var isTrash = getNotes.trashNotes.contains(noteModel);
-  var removeNote = context.read<RemoveNoteCubit>();
-  var updateNote = context.read<UpdateNoteCubit>();
-  var storeNote = context.read<StoreNoteCubit>();
+
   List<CustomDialogModel> items = [
     if (selectedIndex <= 1)
       CustomDialogModel(
@@ -32,69 +20,23 @@ void showCustomDialog(BuildContext context,
           backgroundColor: const Color(0xffF7CE45),
           image: Assets.imagesFavourite,
           onTap: () async {
-            await onTapFavourite(context, noteModel, removeNote, index,
-                updateNote, storeNote, getNotes);
+            await onTapFavourite(context, noteModel, index);
           }),
     if (selectedIndex <= 0 || selectedIndex == 2)
       CustomDialogModel(
-          title: isHidden ? 'Show note' : 'Hidden',
+          title: noteModel.isHidden ? 'Show' : 'Hidden',
           backgroundColor: const Color(0xff4E94F8),
           image: Assets.imagesHidden,
           onTap: () async {
-            GoRouter.of(context).pop();
-            if (!isHidden) {
-              await context.read<StoreNoteCubit>().storeNote(
-                  noteModel: noteModel, boxName: Constants.kHiddenNotes);
-              await removeNote.removeNote(
-                  noteID: index, boxName: Constants.kAllNotes);
-              if (isFavourite) {
-                await removeNote.removeNote(
-                    noteID: index, boxName: Constants.kFavouriteNotes);
-              }
-            } else {
-              await context.read<StoreNoteCubit>().storeNote(
-                  noteModel: noteModel, boxName: Constants.kAllNotes);
-              await removeNote.removeNote(
-                  noteID: index, boxName: Constants.kHiddenNotes);
-            }
-
-            getNotes.getFavouriteNotes();
-            getNotes.getHiddenNotes();
-            getNotes.getAllNotes();
+            await onTapHidden(context, noteModel, index);
           }),
     if (selectedIndex != 1)
       CustomDialogModel(
-          title: isTrash ? 'Restore' : 'Trash',
+          title: noteModel.isTrash ? 'Restore' : 'Trash',
           backgroundColor: const Color(0xffEB4D3D),
           image: Assets.imagesTrash,
           onTap: () async {
-            GoRouter.of(context).pop();
-            if (!isTrash) {
-              await context.read<StoreNoteCubit>().storeNote(
-                  noteModel: noteModel, boxName: Constants.kTrashNotes);
-              if (isHidden) {
-                await removeNote.removeNote(
-                    noteID: index, boxName: Constants.kHiddenNotes);
-              } else {
-                await removeNote.removeNote(
-                    noteID: index, boxName: Constants.kAllNotes);
-              }
-
-              if (isFavourite) {
-                await removeNote.removeNote(
-                    noteID: index, boxName: Constants.kFavouriteNotes);
-              }
-            } else {
-              await context.read<StoreNoteCubit>().storeNote(
-                  noteModel: noteModel, boxName: Constants.kAllNotes);
-              await removeNote.removeNote(
-                  noteID: index, boxName: Constants.kTrashNotes);
-            }
-
-            getNotes.getFavouriteNotes();
-            getNotes.getHiddenNotes();
-            getNotes.getTrashNotes();
-            getNotes.getAllNotes();
+            await onTapTrash(context, noteModel, index);
           })
   ];
   showGeneralDialog(
@@ -104,27 +46,7 @@ void showCustomDialog(BuildContext context,
     barrierColor: Colors.black.withOpacity(0.5),
     transitionDuration: const Duration(milliseconds: 700),
     pageBuilder: (_, __, ___) {
-      return Center(
-        child: Material(
-          color: Colors.transparent,
-          child: Container(
-            margin: const EdgeInsets.symmetric(horizontal: 20),
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-                color: AppColors.backgroundColor,
-                borderRadius: BorderRadius.circular(10)),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: List.generate(items.length, (index) {
-                return Padding(
-                    padding:
-                        EdgeInsets.symmetric(vertical: index == 1 ? 12 : 0.0),
-                    child: CustomDialogItem(customDialogModel: items[index]));
-              }),
-            ),
-          ),
-        ),
-      );
+      return ShowCustomDialogBody(items: items);
     },
     transitionBuilder: (_, anim, __, child) {
       Tween<Offset> tween;
@@ -136,13 +58,8 @@ void showCustomDialog(BuildContext context,
 
       return SlideTransition(
         position: tween.animate(anim),
-        child: FadeTransition(
-          opacity: anim,
-          child: child,
-        ),
+        child: FadeTransition(opacity: anim, child: child),
       );
     },
   );
 }
-
-
