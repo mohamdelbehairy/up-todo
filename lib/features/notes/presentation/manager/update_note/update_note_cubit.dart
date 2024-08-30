@@ -12,18 +12,33 @@ class UpdateNoteCubit extends Cubit<UpdateNoteState> {
 
   final UpdateNoteRepo _updateNoteRepo;
 
-  Future<void> updateNotes(
+  Future<void> updateNotesWithIndex(
       {required int index,
       required String boxName,
       required NoteModel noteModel}) async {
     emit(UpdateNoteLoading());
     try {
-      await _updateNoteRepo.updateNotes(
+      await _updateNoteRepo.updateNotesWithIndex(
           index: index, boxName: boxName, noteModel: noteModel);
-      emit(UpdateNoteSuccess());
+      emit(UpdateNoteWithIndexSuccess());
     } catch (e) {
       emit(UpdateNoteFailure(errorMessage: e.toString()));
-      log('error from updateNote: $e');
+      log('error from updateNoteWithIndex : $e');
+    }
+  }
+
+  Future<void> updateNotesWithKey(
+      {required key,
+      required String boxName,
+      required NoteModel noteModel}) async {
+    emit(UpdateNoteLoading());
+    try {
+      await _updateNoteRepo.updateNotesWithKey(
+          key: key, boxName: boxName, noteModel: noteModel);
+      emit(UpdateNoteWithKeySuccess());
+    } catch (e) {
+      emit(UpdateNoteFailure(errorMessage: e.toString()));
+      log('error from updateNoteWithKey: $e');
     }
   }
 }

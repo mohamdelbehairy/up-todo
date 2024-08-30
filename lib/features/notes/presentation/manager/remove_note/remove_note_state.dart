@@ -9,6 +9,8 @@ final class RemoveNoteLoading extends RemoveNoteState {}
 
 final class RemoveNoteSuccess extends RemoveNoteState {}
 
+final class RemoveAllNotesSuccess extends RemoveNoteState {}
+
 final class RemoveNoteFailure extends RemoveNoteState {
   final String errorMessage;
   RemoveNoteFailure({required this.errorMessage});

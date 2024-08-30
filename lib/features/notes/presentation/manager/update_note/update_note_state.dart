@@ -6,7 +6,9 @@ final class UpdateNoteInitial extends UpdateNoteState {}
 
 final class UpdateNoteLoading extends UpdateNoteState {}
 
-final class UpdateNoteSuccess extends UpdateNoteState {}
+final class UpdateNoteWithIndexSuccess extends UpdateNoteState {}
+
+final class UpdateNoteWithKeySuccess extends UpdateNoteState {}
 
 final class UpdateNoteFailure extends UpdateNoteState {
   final String errorMessage;

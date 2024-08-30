@@ -21,4 +21,16 @@ class RemoveNoteCubit extends Cubit<RemoveNoteState> {
       log('error from removeNote: $e');
     }
   }
+
+  Future<void> removeAllNotes({required String boxName}) async {
+    emit(RemoveNoteLoading());
+    try {
+      await _removeNotesRepo.removeAllNotes(boxName: boxName);
+      
+      emit(RemoveAllNotesSuccess());
+    }  catch (e) {
+      emit(RemoveNoteFailure(errorMessage: e.toString()));
+      log('error from removeAllNotes: $e');
+    }
+  }
 }

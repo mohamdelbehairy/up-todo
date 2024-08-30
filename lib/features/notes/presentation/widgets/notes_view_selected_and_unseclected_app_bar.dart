@@ -5,6 +5,7 @@ import 'package:up_todo/core/utils/assets.dart';
 import 'package:up_todo/core/utils/styles.dart';
 import 'package:up_todo/core/widgets/custom_back_widget.dart';
 import 'package:up_todo/core/widgets/custom_svg.dart';
+import '../../../../core/utils/function/show_clear_and_restore_notes_dialog.dart';
 import '../manager/selected_type_note/selected_type_note_cubit.dart';
 
 class NoteViewUnSelectedAppBar extends StatelessWidget {
@@ -31,7 +32,7 @@ class NoteViewSelectedAppBar extends StatelessWidget {
         }),
         InkWell(
             onTap: () {
-              
+              showClearAndRestoreNotesDialog(context);
             },
             child: CustomSvg(
                 svgModel: SvgModel(

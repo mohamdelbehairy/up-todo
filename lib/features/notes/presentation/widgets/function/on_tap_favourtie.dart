@@ -18,13 +18,13 @@ Future<void> onTapFavourite(
   if (noteModel.isFavourite) {
     await removeNote.removeNote(
         noteID: index, boxName: Constants.kFavouriteNotes);
-    await updateNote.updateNotes(
+    await updateNote.updateNotesWithIndex(
         index: index,
         boxName: Constants.kAllNotes,
         noteModel: NoteModel(
             title: noteModel.title, body: noteModel.body, isFavourite: false));
   } else {
-    await updateNote.updateNotes(
+    await updateNote.updateNotesWithIndex(
         index: index,
         boxName: Constants.kAllNotes,
         noteModel: NoteModel(

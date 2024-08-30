@@ -39,4 +39,8 @@ class GetNotesCubit extends Cubit<GetNotesState> {
     trashNotes = _getNotesRepo.getNotes(Constants.kTrashNotes);
     emit(GetTrashNotesSuccess());
   }
+
+  Map<dynamic, NoteModel> getNotesToMap(String boxName) {
+    return _getNotesRepo.getNotesToMap(boxName);
+  }
 }
