@@ -23,7 +23,7 @@ class ShowAllNotes extends StatelessWidget {
                 color: noteItemModel.isActive
                     ? const Color(0xff8E8E92)
                     : Colors.transparent),
-            color: AppColors.allNotesColor,
+            color: AppColors.allNotesColorBackground,
             borderRadius: BorderRadius.circular(10)),
         child: ShowNoteItemBody(noteItemModel: noteItemModel),
       ),
@@ -77,7 +77,7 @@ class ShowFavoriteNotes extends StatelessWidget {
                 color: noteItemModel.isActive
                     ? const Color(0xffF7CE45)
                     : Colors.transparent),
-            color: AppColors.favouriteNotesColor,
+            color: AppColors.favouriteNotesColorBackground,
             borderRadius: BorderRadius.circular(10)),
         child: ShowNoteItemBody(noteItemModel: noteItemModel),
       ),
@@ -104,7 +104,7 @@ class ShowHiddenNotes extends StatelessWidget {
                 color: noteItemModel.isActive
                     ? const Color(0xff4E94F8)
                     : Colors.transparent),
-            color: AppColors.hiddenNotesColor,
+            color: AppColors.hiddenNotesColorBackground,
             borderRadius: BorderRadius.circular(10)),
         child: ShowNoteItemBody(noteItemModel: noteItemModel),
       ),
@@ -131,7 +131,7 @@ class ShowTrashNotes extends StatelessWidget {
                 color: noteItemModel.isActive
                     ? const Color(0xffEB4D3D)
                     : Colors.transparent),
-            color: AppColors.trashNotesColor,
+            color: AppColors.trashNotesColorBackground,
             borderRadius: BorderRadius.circular(10)),
         child: ShowNoteItemBody(noteItemModel: noteItemModel),
       ),

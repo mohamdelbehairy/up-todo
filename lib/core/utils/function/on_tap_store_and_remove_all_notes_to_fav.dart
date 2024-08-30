@@ -1,9 +1,10 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:up_todo/core/models/flutter_toast_model.dart';
+import 'package:up_todo/core/utils/colors.dart';
 import 'package:up_todo/core/utils/constants.dart';
+import 'package:up_todo/core/widgets/custom_flutter_toast.dart';
 
 import '../../../features/notes/data/models/note_model.dart';
 import '../../../features/notes/presentation/manager/get_notes/get_notes_cubit.dart';
@@ -41,8 +42,15 @@ Future<void> onTapStoreAndRemoveAllNotesToFav(BuildContext context) async {
                 isHidden: note.isHidden,
                 isTrash: note.isTrash),
             boxName: Constants.kFavouriteNotes);
+        CustomFlutterToast.showCustomFlutterToast(
+            flutterToastModel: FlutterToastModel(
+                message: 'All notes added to favourite',
+                backgroundColor: AppColors.allNotesColor));
       } else {
-        log('موجود بالفعل');
+        CustomFlutterToast.showCustomFlutterToast(
+            flutterToastModel: FlutterToastModel(
+                message: 'All notes are already in favourite',
+                backgroundColor: AppColors.allNotesColor));
       }
     }
   } else {
@@ -61,6 +69,15 @@ Future<void> onTapStoreAndRemoveAllNotesToFav(BuildContext context) async {
                 isTrash: note.isTrash));
       }
       await removeAllNotes.removeAllNotes(boxName: Constants.kFavouriteNotes);
+      CustomFlutterToast.showCustomFlutterToast(
+          flutterToastModel: FlutterToastModel(
+              message: 'All notes removed from favourite',
+              backgroundColor: AppColors.favouriteNotesColor));
+    } else {
+      CustomFlutterToast.showCustomFlutterToast(
+          flutterToastModel: FlutterToastModel(
+              message: 'You don\'t have any notes in favourite',
+              backgroundColor: AppColors.favouriteNotesColor));
     }
   }
 
