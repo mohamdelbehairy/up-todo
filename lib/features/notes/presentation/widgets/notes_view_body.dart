@@ -22,7 +22,8 @@ class NotesViewBody extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               if (selectedIndex.selectedIndex == -1) const SizedBox(height: 24),
-              if (selectedIndex.selectedIndex != -1) const SizedBox(height: 50),
+              if (selectedIndex.selectedIndex != -1) const SizedBox(height: 56
+              ),
               if (selectedIndex.selectedIndex == -1)
                 Text(formattedData(), style: Styles.styleRegular13),
               if (selectedIndex.selectedIndex == -1)

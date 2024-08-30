@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:up_todo/core/models/svg_model.dart';
 import 'package:up_todo/core/utils/assets.dart';
-import 'package:up_todo/core/widgets/custom_app_bar.dart';
+import 'package:up_todo/core/utils/styles.dart';
 import 'package:up_todo/core/widgets/custom_back_widget.dart';
 import 'package:up_todo/core/widgets/custom_svg.dart';
-
-import '../../../../core/models/app_bar_model.dart';
 import '../manager/selected_type_note/selected_type_note_cubit.dart';
 
 class NoteViewUnSelectedAppBar extends StatelessWidget {
@@ -14,7 +12,7 @@ class NoteViewUnSelectedAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomAppBar(appBarModel: AppBarModel(title: 'Notes', onTap: () {}));
+    return Text('Notes', style: Styles.styleBold26);
   }
 }
 
