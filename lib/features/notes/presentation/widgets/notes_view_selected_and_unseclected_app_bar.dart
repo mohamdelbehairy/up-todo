@@ -30,7 +30,9 @@ class NoteViewSelectedAppBar extends StatelessWidget {
           context.read<SelectedTypeNoteCubit>().gradeViewChangeIndex(-1);
         }),
         InkWell(
-            onTap: () {},
+            onTap: () {
+              
+            },
             child: CustomSvg(
                 svgModel: SvgModel(
                     height: 22, width: 22, image: Assets.imagesCircleSetting)))

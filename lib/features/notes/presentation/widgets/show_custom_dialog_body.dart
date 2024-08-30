@@ -3,8 +3,8 @@ import 'package:up_todo/core/models/custom_dialog_model.dart';
 import 'package:up_todo/core/utils/colors.dart';
 import 'package:up_todo/features/notes/presentation/widgets/show_custom_dialog_item.dart';
 
-class ShowCustomDialogBody extends StatelessWidget {
-  const ShowCustomDialogBody({super.key, required this.items});
+class ShowCustomNotesDialogBody extends StatelessWidget {
+  const ShowCustomNotesDialogBody({super.key, required this.items});
 
   final List<CustomDialogModel> items;
 

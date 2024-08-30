@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:up_todo/core/utils/function/show_custom_dialog.dart';
+import 'package:up_todo/core/utils/function/show_custom_notes_dialog.dart';
 import 'package:up_todo/features/notes/data/models/note_item_model.dart';
 import 'package:up_todo/features/notes/data/models/note_model.dart';
 import 'package:up_todo/features/notes/presentation/manager/selected_type_note/selected_type_note_cubit.dart';
@@ -8,8 +8,7 @@ import 'package:up_todo/features/notes/presentation/manager/selected_type_note/s
 import 'show_note_item.dart';
 
 class ShowNotesGridView extends StatelessWidget {
-  const ShowNotesGridView(
-      {super.key, required this.notes});
+  const ShowNotesGridView({super.key, required this.notes});
   final List<NoteModel> notes;
 
   @override
@@ -30,7 +29,7 @@ class ShowNotesGridView extends StatelessWidget {
                 selectedIndex.listViewChangeIndex(-1);
               },
               onLongTap: () {
-                showCustomDialog(context,
+                showCustomNotesDialog(context,
                     noteModel: notes[index], index: index);
               },
               isActive: selectedIndex.gridViewAvtiveIndex == index),

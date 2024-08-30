@@ -9,7 +9,7 @@ import '../../../features/notes/presentation/widgets/function/on_tap_trash.dart'
 import '../../../features/notes/presentation/widgets/show_custom_dialog_body.dart';
 import '../../models/custom_dialog_model.dart';
 
-void showCustomDialog(BuildContext context,
+void showCustomNotesDialog(BuildContext context,
     {required NoteModel noteModel, required int index}) {
   var selectedIndex = context.read<SelectedTypeNoteCubit>().selectedIndex;
 
@@ -46,7 +46,7 @@ void showCustomDialog(BuildContext context,
     barrierColor: Colors.black.withOpacity(0.5),
     transitionDuration: const Duration(milliseconds: 700),
     pageBuilder: (_, __, ___) {
-      return ShowCustomDialogBody(items: items);
+      return ShowCustomNotesDialogBody(items: items);
     },
     transitionBuilder: (_, anim, __, child) {
       Tween<Offset> tween;

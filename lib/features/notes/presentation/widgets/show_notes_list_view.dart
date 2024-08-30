@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:up_todo/core/utils/function/show_custom_dialog.dart';
+import 'package:up_todo/core/utils/function/show_custom_notes_dialog.dart';
 import 'package:up_todo/features/notes/data/models/note_model.dart';
 
 import '../../data/models/note_item_model.dart';
@@ -33,7 +33,7 @@ class ShowNotesListView extends StatelessWidget {
                     selectedIndex.gradeViewChangeIndex(-1);
                   },
                   onLongTap: () {
-                    showCustomDialog(context,
+                    showCustomNotesDialog(context,
                         noteModel: notes[index], index: index + 2);
                   },
                   isActive: selectedIndex.listViewAvtiveIndex == index),
