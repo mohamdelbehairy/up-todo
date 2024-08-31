@@ -9,10 +9,12 @@ import '../../manager/store_note/store_note_cubit.dart';
 
 Future<void> onTapHidden(
     BuildContext context, NoteModel noteModel, int index) async {
-  GoRouter.of(context).pop();
   var getNotes = context.read<GetNotesCubit>();
   var removeNote = context.read<RemoveNoteCubit>();
   var storeNote = context.read<StoreNoteCubit>();
+  
+  GoRouter.of(context).pop();
+
   if (noteModel.isHidden) {
     await storeNote.storeNote(
         noteModel: NoteModel(

@@ -1,26 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:up_todo/core/models/flutter_toast_model.dart';
 import 'package:up_todo/core/utils/colors.dart';
 import 'package:up_todo/core/utils/constants.dart';
 import 'package:up_todo/core/widgets/custom_flutter_toast.dart';
+import '../../../data/models/note_model.dart';
+import '../../manager/get_notes/get_notes_cubit.dart';
+import '../../manager/remove_note/remove_note_cubit.dart';
+import '../../manager/selected_type_note/selected_type_note_cubit.dart';
+import '../../manager/store_note/store_note_cubit.dart';
+import '../../manager/update_note/update_note_cubit.dart';
 
-import '../../../features/notes/data/models/note_model.dart';
-import '../../../features/notes/presentation/manager/get_notes/get_notes_cubit.dart';
-import '../../../features/notes/presentation/manager/remove_note/remove_note_cubit.dart';
-import '../../../features/notes/presentation/manager/selected_type_note/selected_type_note_cubit.dart';
-import '../../../features/notes/presentation/manager/store_note/store_note_cubit.dart';
-import '../../../features/notes/presentation/manager/update_note/update_note_cubit.dart';
-
-Future<void> onTapStoreAndRemoveAllNotesToFav(BuildContext context) async {
+Future<void> onTapAllFavourite(BuildContext context) async {
   var selectedIndex = context.read<SelectedTypeNoteCubit>().selectedIndex;
   var getNotes = context.read<GetNotesCubit>();
   var removeAllNotes = context.read<RemoveNoteCubit>();
   var updateAllNotes = context.read<UpdateNoteCubit>();
   var storeNotes = context.read<StoreNoteCubit>();
 
-  GoRouter.of(context).pop();
+  
   if (selectedIndex == 0 && getNotes.allNotes.isNotEmpty) {
     for (var key in getNotes.getNotesToMap(Constants.kAllNotes).keys) {
       var note = getNotes.getNotesToMap(Constants.kAllNotes)[key] as NoteModel;

@@ -6,14 +6,17 @@ import 'package:up_todo/features/notes/data/models/note_model.dart';
 
 import '../../manager/get_notes/get_notes_cubit.dart';
 import '../../manager/remove_note/remove_note_cubit.dart';
+import '../../manager/selected_type_note/selected_type_note_cubit.dart';
 import '../../manager/store_note/store_note_cubit.dart';
 
 Future<void> onTapTrash(
     BuildContext context, NoteModel noteModel, int index) async {
-  GoRouter.of(context).pop();
+  var selectedIndex = context.read<SelectedTypeNoteCubit>().selectedIndex;
   var getNotes = context.read<GetNotesCubit>();
   var removeNote = context.read<RemoveNoteCubit>();
   var storeNote = context.read<StoreNoteCubit>();
+
+  GoRouter.of(context).pop();
 
   if (noteModel.isTrash) {
     await storeNote.storeNote(
@@ -34,7 +37,9 @@ Future<void> onTapTrash(
         noteModel: NoteModel(
             title: noteModel.title, body: noteModel.body, isTrash: true),
         boxName: Constants.kTrashNotes);
-    await removeNote.removeNote(noteID: index, boxName: Constants.kAllNotes);
+    if (selectedIndex == 0) {
+      await removeNote.removeNote(noteID: index, boxName: Constants.kAllNotes);
+    }
   }
   getNotes.getFavouriteNotes();
   getNotes.getHiddenNotes();
