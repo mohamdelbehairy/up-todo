@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:up_todo/features/notes/presentation/manager/get_notes/get_notes_cubit.dart';
-
 import '../../data/models/note_model.dart';
+import '../manager/get_notes/get_notes_cubit.dart';
 import '../manager/selected_type_note/selected_type_note_cubit.dart';
+import 'show_no_notes_founded.dart';
 import 'show_notes_grid_view.dart';
 import 'show_notes_list_view.dart';
 
@@ -41,6 +41,17 @@ class ShowNotesGridAndListView extends StatelessWidget {
             ShowNotesGridView(notes: gridNotes),
             const SizedBox(height: 12),
             ShowNotesListView(notes: listNotes),
+            if (notes.recentNotes.isEmpty && selectedIndex.selectedIndex == -1)
+              const NoRecentFounded(),
+            if (notes.allNotes.isEmpty && selectedIndex.selectedIndex == 0)
+              const NoAllNotesFounded(),
+            if (notes.favouriteNotes.isEmpty &&
+                selectedIndex.selectedIndex == 1)
+              const NoAllNotesFounded(),
+            if (notes.hiddenNotes.isEmpty && selectedIndex.selectedIndex == 2)
+              const NoAllNotesFounded(),
+            if (notes.trashNotes.isEmpty && selectedIndex.selectedIndex == 3)
+              const NoAllNotesFounded(),
           ],
         );
       },
