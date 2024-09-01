@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:up_todo/core/utils/assets.dart';
 import 'package:up_todo/features/notes/data/models/note_model.dart';
 import 'package:up_todo/features/notes/presentation/widgets/function/on_tap_hidden.dart';
@@ -20,6 +21,7 @@ void showCustomNotesDialog(BuildContext context,
           backgroundColor: const Color(0xffF7CE45),
           image: Assets.imagesFavourite,
           onTap: () async {
+            GoRouter.of(context).pop();
             await onTapFavourite(context, noteModel, index);
           }),
     if (selectedIndex <= 0 || selectedIndex == 2)
@@ -28,6 +30,7 @@ void showCustomNotesDialog(BuildContext context,
           backgroundColor: const Color(0xff4E94F8),
           image: Assets.imagesHidden,
           onTap: () async {
+            GoRouter.of(context).pop();
             await onTapHidden(context, noteModel, index);
           }),
     if (selectedIndex != 1)
@@ -36,6 +39,7 @@ void showCustomNotesDialog(BuildContext context,
           backgroundColor: const Color(0xffEB4D3D),
           image: Assets.imagesTrash,
           onTap: () async {
+            GoRouter.of(context).pop();
             await onTapTrash(context, noteModel, index);
           })
   ];

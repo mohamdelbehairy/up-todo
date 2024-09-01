@@ -18,7 +18,6 @@ Future<void> onTapAllFavourite(BuildContext context) async {
   var updateAllNotes = context.read<UpdateNoteCubit>();
   var storeNotes = context.read<StoreNoteCubit>();
 
-  
   if (selectedIndex == 0 && getNotes.allNotes.isNotEmpty) {
     for (var key in getNotes.getNotesToMap(Constants.kAllNotes).keys) {
       var note = getNotes.getNotesToMap(Constants.kAllNotes)[key] as NoteModel;
@@ -74,8 +73,10 @@ Future<void> onTapAllFavourite(BuildContext context) async {
     } else {
       CustomFlutterToast.showCustomFlutterToast(
           flutterToastModel: FlutterToastModel(
-              message: 'You don\'t have any notes in favourite',
-              backgroundColor: AppColors.favouriteNotesColor));
+              message: 'All notes are empty',
+              backgroundColor: selectedIndex == 0
+                  ? AppColors.allNotesColor
+                  : AppColors.favouriteNotesColor));
     }
   }
 

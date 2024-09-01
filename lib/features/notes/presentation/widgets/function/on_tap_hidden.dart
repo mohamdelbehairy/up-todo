@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
+import 'package:up_todo/core/models/flutter_toast_model.dart';
+import 'package:up_todo/core/utils/colors.dart';
 import 'package:up_todo/core/utils/constants.dart';
 import 'package:up_todo/features/notes/data/models/note_model.dart';
+import '../../../../../core/widgets/custom_flutter_toast.dart';
 import '../../manager/get_notes/get_notes_cubit.dart';
 import '../../manager/remove_note/remove_note_cubit.dart';
 import '../../manager/store_note/store_note_cubit.dart';
@@ -12,8 +14,6 @@ Future<void> onTapHidden(
   var getNotes = context.read<GetNotesCubit>();
   var removeNote = context.read<RemoveNoteCubit>();
   var storeNote = context.read<StoreNoteCubit>();
-  
-  GoRouter.of(context).pop();
 
   if (noteModel.isHidden) {
     await storeNote.storeNote(
@@ -25,6 +25,10 @@ Future<void> onTapHidden(
           noteModel: noteModel, boxName: Constants.kFavouriteNotes);
     }
     await removeNote.removeNote(noteID: index, boxName: Constants.kHiddenNotes);
+    CustomFlutterToast.showCustomFlutterToast(
+        flutterToastModel: FlutterToastModel(
+            message: 'Note removed from hidden',
+            backgroundColor: AppColors.hiddenNotesColor));
   } else {
     if (noteModel.isFavourite) {
       await storeNote.storeNote(
@@ -42,7 +46,12 @@ Future<void> onTapHidden(
               title: noteModel.title, body: noteModel.body, isHidden: true),
           boxName: Constants.kHiddenNotes);
     }
+
     await removeNote.removeNote(noteID: index, boxName: Constants.kAllNotes);
+    CustomFlutterToast.showCustomFlutterToast(
+        flutterToastModel: FlutterToastModel(
+            message: 'Note added to hidden',
+            backgroundColor: AppColors.allNotesColor));
   }
   getNotes.getFavouriteNotes();
   getNotes.getHiddenNotes();

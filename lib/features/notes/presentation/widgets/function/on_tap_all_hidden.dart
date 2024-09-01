@@ -92,7 +92,7 @@ Future<void> onTapAllHidden(BuildContext context) async {
     } else {
       CustomFlutterToast.showCustomFlutterToast(
           flutterToastModel: FlutterToastModel(
-              message: 'You don\'t have any notes in hidden',
+              message: 'All notes are empty',
               backgroundColor: AppColors.hiddenNotesColor));
     }
   }
