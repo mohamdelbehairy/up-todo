@@ -11,15 +11,18 @@ class ShowNoteItemBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        FittedBox(
-            child:
-                Text(noteItemModel.note.title, style: Styles.styleSemiBold15)),
-        const NotesDivider(),
-        Text(noteItemModel.note.body, style: Styles.styleLight12)
-      ],
+    return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          FittedBox(
+              child: Text(noteItemModel.note.title,
+                  style: Styles.styleSemiBold15)),
+          const NotesDivider(),
+          Text(noteItemModel.note.body, style: Styles.styleLight12)
+        ],
+      ),
     );
   }
 }

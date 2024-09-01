@@ -60,6 +60,28 @@ Future<void> onTapAllTrash(BuildContext context) async {
               backgroundColor: AppColors.allNotesColor));
     }
   } else if (selectedIndex == 2) {
+    if (getNotes.hiddenNotes.isNotEmpty) {
+      for (var note in getNotes.hiddenNotes) {
+        await storeNotes.storeNote(
+            noteModel: NoteModel(
+                title: note.title,
+                body: note.body,
+                isFavourite: false,
+                isHidden: false,
+                isTrash: true),
+            boxName: Constants.kTrashNotes);
+        await removeAllNotes.removeAllNotes(boxName: Constants.kHiddenNotes);
+      }
+      CustomFlutterToast.showCustomFlutterToast(
+          flutterToastModel: FlutterToastModel(
+              message: 'All notes added to trash',
+              backgroundColor: AppColors.hiddenNotesColor));
+    } else {
+      CustomFlutterToast.showCustomFlutterToast(
+          flutterToastModel: FlutterToastModel(
+              message: 'All notes are empty',
+              backgroundColor: AppColors.hiddenNotesColor));
+    }
   } else {
     if (getNotes.trashNotes.isNotEmpty) {
       for (var note in getNotes.trashNotes) {

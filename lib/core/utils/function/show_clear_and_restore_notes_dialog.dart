@@ -16,7 +16,9 @@ void showClearAndRestoreNotesDialog(BuildContext context) {
   List<CustomDialogModel> items = [
     if (selectedIndex <= 1)
       CustomDialogModel(
-          title: selectedIndex == 0 ? 'Favourite all notes' : 'Clear all notes',
+          title: selectedIndex == 0
+              ? 'Favourite all notes'
+              : 'Unfavourite all notes',
           backgroundColor: const Color(0xffF7CE45),
           image: Assets.imagesFavourite,
           onTap: () async {
