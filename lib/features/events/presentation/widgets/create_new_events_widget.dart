@@ -3,6 +3,7 @@ import 'package:up_todo/core/models/svg_model.dart';
 import 'package:up_todo/core/utils/assets.dart';
 import 'package:up_todo/core/utils/styles.dart';
 import 'package:up_todo/core/widgets/custom_svg.dart';
+import 'function/events_bottom_sheet.dart';
 
 class CreateNewEventWidget extends StatelessWidget {
   const CreateNewEventWidget({super.key});
@@ -10,7 +11,9 @@ class CreateNewEventWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        eventsBottomSheet(context);
+      },
       child: Container(
         height: 52,
         padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -27,4 +30,7 @@ class CreateNewEventWidget extends StatelessWidget {
       ),
     );
   }
+
+
 }
+
