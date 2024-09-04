@@ -5,8 +5,9 @@ import 'package:up_todo/core/widgets/custom_svg.dart';
 
 import 'selected_date_time_icon.dart';
 
-class EventsSelectedDateTimeAndSaveSection extends StatelessWidget {
-  const EventsSelectedDateTimeAndSaveSection({super.key});
+class EventsSelectedDateTimeAndSaveButton extends StatelessWidget {
+  const EventsSelectedDateTimeAndSaveButton({super.key, required this.onTapSave});
+  final Function() onTapSave;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class EventsSelectedDateTimeAndSaveSection extends StatelessWidget {
           ],
         ),
         InkWell(
-            onTap: () {},
+            onTap: onTapSave,
             child: CustomSvg(svgModel: SvgModel(image: Assets.imagesSendEvent)))
       ],
     );

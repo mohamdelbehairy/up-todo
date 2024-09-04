@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:up_todo/core/utils/styles.dart';
-import 'package:up_todo/features/events/presentation/widgets/events_selected_date_time_and_save_section.dart';
-
-import 'events_text_fields_section.dart';
+import 'events_text_fields_and_button_section.dart';
 
 class EventsBottomSheetBody extends StatelessWidget {
   const EventsBottomSheetBody({super.key});
@@ -21,12 +19,12 @@ class EventsBottomSheetBody extends StatelessWidget {
           const SizedBox(height: 16),
           Text('Add Event', style: Styles.styleBold26),
           const SizedBox(height: 8),
-          const EventsTextFieldsSection(),
-          const SizedBox(height: 16),
-          const EventsSelectedDateTimeAndSaveSection(),
+          const EventsTextFieldsAndButtonsSection(),
           const SizedBox(height: 24),
         ],
       ),
     );
   }
 }
+
+

@@ -10,19 +10,18 @@ class EventsTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 50,
-      child: TextField(
-        controller: textFieldModel.controller,
-        style: Styles.styleBold26.copyWith(fontSize: 14),
-        decoration: InputDecoration(
-            hintText: textFieldModel.title,
-            border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(4),
-                borderSide: const BorderSide(color: AppColors.primaryColor)),
-            focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(4),
-                borderSide: const BorderSide(color: AppColors.primaryColor))),
+    return TextFormField(
+      controller: textFieldModel.controller,
+      validator: textFieldModel.validator,
+      style: Styles.styleBold26.copyWith(fontSize: 14),
+      decoration: InputDecoration(
+        hintText: textFieldModel.title,
+        border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(4),
+            borderSide: const BorderSide(color: AppColors.primaryColor)),
+        focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(4),
+            borderSide: const BorderSide(color: AppColors.primaryColor)),
       ),
     );
   }

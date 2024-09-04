@@ -11,7 +11,7 @@ class SelectedDateAndTimeIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      child: Icon(icon, color: AppColors.primaryColor),
+      child: Icon(icon, color: AppColors.hiddenNotesColor),
     );
   }
 }
