@@ -4,6 +4,7 @@ import 'package:up_todo/core/utils/assets.dart';
 import 'package:up_todo/features/notes/presentation/views/notes_view.dart';
 import 'package:up_todo/features/search/presentation/views/search_view.dart';
 
+import '../../../../events/presentation/views/events_view.dart';
 import '../../../data/models/bottom_navigation_model.dart';
 part 'bottom_navigation_state.dart';
 
@@ -21,7 +22,7 @@ class BottomNavigationCubit extends Cubit<BottomNavigationState> {
 
   List views = [
     const NotesView(),
-    const Scaffold(backgroundColor: Colors.yellow),
+    const EventsView(),
     const SearchView(),
     const Scaffold(backgroundColor: Colors.black),
   ];

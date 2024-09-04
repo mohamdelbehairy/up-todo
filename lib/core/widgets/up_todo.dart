@@ -11,11 +11,10 @@ class UpTodo extends StatelessWidget {
   Widget build(BuildContext context) {
     return UpTodoMultiBlocProvider(
         child: MaterialApp.router(
-            theme:
-                ThemeData(scaffoldBackgroundColor: AppColors.backgroundColor),
+            theme: ThemeData(
+                // useMaterial3: false,
+                scaffoldBackgroundColor: AppColors.backgroundColor),
             debugShowCheckedModeBanner: false,
             routerConfig: AppRouter.router));
   }
 }
-
-

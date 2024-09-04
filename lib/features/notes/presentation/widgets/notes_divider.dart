@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
 class NotesDivider extends StatelessWidget {
-  const NotesDivider({super.key});
+  const NotesDivider({super.key, this.color});
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
-    return const Divider(thickness: .5, color: Colors.grey);
+    return  Divider(thickness: .5, color: color ?? Colors.grey);
   }
 }

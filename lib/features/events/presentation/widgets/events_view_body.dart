@@ -1,0 +1,23 @@
+import 'package:flutter/material.dart';
+import '../../../notes/presentation/widgets/notes_divider.dart';
+import 'events_table_calender.dart';
+import 'events_view_header.dart';
+
+class EventsViewBody extends StatelessWidget {
+  const EventsViewBody({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SizedBox(height: 24),
+        const EventsViewHeader(),
+        const SizedBox(height: 24),
+        const EventsTableCalender(),
+        const SizedBox(height: 12),
+        NotesDivider(color: Colors.grey.withOpacity(.45))
+      ],
+    );
+  }
+}
