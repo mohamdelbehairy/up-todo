@@ -50,6 +50,10 @@ class Assets {
   /// assets/images/splash.svg
   static const String imagesSplash = "assets/images/splash.svg";
 
+  /// Assets for imagesSqureCreateEvent
+  /// assets/images/squre_create_event.svg
+  static const String imagesSqureCreateEvent = "assets/images/squre_create_event.svg";
+
   /// Assets for imagesTrash
   /// assets/images/trash.svg
   static const String imagesTrash = "assets/images/trash.svg";
