@@ -16,6 +16,8 @@ class NoteModel {
   final bool isTrash;
   @HiveField(5)
   final DateTime? dateTime;
+  @HiveField(6)
+  final int? id;
 
   NoteModel(
       {required this.title,
@@ -23,5 +25,6 @@ class NoteModel {
       this.isFavourite = false,
       this.isHidden = false,
       this.isTrash = false,
-      this.dateTime});
+      this.dateTime,
+      this.id});
 }

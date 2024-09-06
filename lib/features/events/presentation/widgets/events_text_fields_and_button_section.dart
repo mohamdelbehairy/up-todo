@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:up_todo/features/events/data/models/events_form_model.dart';
+import 'package:up_todo/features/events/presentation/manager/notification/notification_cubit.dart';
+import 'package:up_todo/features/events/presentation/manager/store_events/store_events_cubit.dart';
 import '../../../create_note/data/models/text_field_model.dart';
+import '../manager/get_events/get_events_cubit.dart';
 import 'events_form.dart';
 
 class EventsTextFieldsAndButtonsSection extends StatefulWidget {
@@ -20,6 +25,7 @@ class _EventsTextFieldsAndButtonsSectionState
   void initState() {
     title = TextEditingController();
     decsription = TextEditingController();
+    context.read<NotificationCubit>().initNotification();
     super.initState();
   }
 
@@ -73,11 +79,19 @@ class _EventsTextFieldsAndButtonsSectionState
             return null;
           }),
     ];
-    return EventsForm(
-        eventsFormModel: EventsFormModel(
-            formKey: formKey,
-            items: items,
-            title: title,
-            decsription: decsription));
+    return BlocListener<StoreEventsCubit, StoreEventsState>(
+      listener: (context, state) {
+        if (state is StoreEventsSuccess) {
+          GoRouter.of(context).pop();
+          BlocProvider.of<GetEventsCubit>(context).getEvents();
+        }
+      },
+      child: EventsForm(
+          eventsFormModel: EventsFormModel(
+              formKey: formKey,
+              items: items,
+              title: title,
+              decsription: decsription)),
+    );
   }
 }
