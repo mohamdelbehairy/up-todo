@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:up_todo/core/utils/function/setup_service_locator.dart';
 
 import '../../features/events/presentation/manager/get_events/get_events_cubit.dart';
 import '../../features/home/presentation/manager/bottom_navigation/bottom_navigation_cubit.dart';
@@ -19,14 +20,14 @@ class UpTodoMultiBlocProvider extends StatelessWidget {
       BlocProvider(create: (context) => OnBoardringCubit()),
       BlocProvider(create: (context) => BottomNavigationCubit()),
       BlocProvider(
-          create: (context) => GetNotesCubit(GetNotesRepoImpl())
+          create: (context) => GetNotesCubit(getIt.get<GetNotesRepoImpl>())
             ..getAllNotes()
             ..getFavouriteNotes()
             ..getHiddenNotes()
             ..getTrashNotes()),
       BlocProvider(create: (context) => StoreNoteCubit(StoreNotesRepoImpl())),
       BlocProvider(
-          create: (context) => GetEventsCubit(GetNotesRepoImpl())..getEvents())
+          create: (context) => GetEventsCubit(getIt.get<GetNotesRepoImpl>())..getEvents())
     ], child: child);
   }
 }
