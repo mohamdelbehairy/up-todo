@@ -24,7 +24,7 @@ class CreateNewEventWidget extends StatelessWidget {
           children: [
             CustomSvg(svgModel: SvgModel(image: Assets.imagesSqureCreateEvent)),
             const SizedBox(width: 12),
-            Text('Create New Event', style: Styles.styleRegular14)
+            Text('Create New Event', style: Styles.styleRegular12)
           ],
         ),
       ),

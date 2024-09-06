@@ -11,5 +11,6 @@ Future<void> initHive() async {
     Hive.openBox<NoteModel>(Constants.kFavouriteNotes),
     Hive.openBox<NoteModel>(Constants.kHiddenNotes),
     Hive.openBox<NoteModel>(Constants.kTrashNotes),
+    Hive.openBox<NoteModel>(Constants.kEvents)
   ]);
 }

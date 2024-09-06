@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:up_todo/core/utils/function/show_custom_notes_dialog.dart';
@@ -28,7 +26,6 @@ class ShowNotesListView extends StatelessWidget {
                   width: double.infinity,
                   note: notes[index],
                   onTap: () {
-                    log('index: $index');
                     selectedIndex.listViewChangeIndex(index);
                     selectedIndex.gradeViewChangeIndex(-1);
                   },
