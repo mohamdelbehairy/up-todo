@@ -14,11 +14,14 @@ class NoteModel {
   final bool isHidden;
   @HiveField(4)
   final bool isTrash;
+  @HiveField(5)
+  final DateTime? dateTime;
 
   NoteModel(
       {required this.title,
       required this.body,
       this.isFavourite = false,
       this.isHidden = false,
-      this.isTrash = false});
+      this.isTrash = false,
+      this.dateTime});
 }

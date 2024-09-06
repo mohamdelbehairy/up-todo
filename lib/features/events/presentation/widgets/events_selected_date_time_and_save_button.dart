@@ -3,11 +3,13 @@ import 'package:up_todo/core/models/svg_model.dart';
 import 'package:up_todo/core/utils/assets.dart';
 import 'package:up_todo/core/widgets/custom_svg.dart';
 
+import '../../data/models/events_tap_model.dart';
 import 'selected_date_time_icon.dart';
 
 class EventsSelectedDateTimeAndSaveButton extends StatelessWidget {
-  const EventsSelectedDateTimeAndSaveButton({super.key, required this.onTapSave});
-  final Function() onTapSave;
+  const EventsSelectedDateTimeAndSaveButton(
+      {super.key, required this.eventsTapModel});
+  final EventsTapModel eventsTapModel;
 
   @override
   Widget build(BuildContext context) {
@@ -16,13 +18,15 @@ class EventsSelectedDateTimeAndSaveButton extends StatelessWidget {
       children: [
         Row(
           children: [
-            SelectedDateAndTimeIcon(onTap: () {}, icon: Icons.schedule),
+            SelectedDateAndTimeIcon(
+                onTap: eventsTapModel.onTapDate, icon: Icons.calendar_month),
             const SizedBox(width: 20),
-            SelectedDateAndTimeIcon(onTap: () {}, icon: Icons.calendar_month),
+            SelectedDateAndTimeIcon(
+                onTap: eventsTapModel.onTapTime, icon: Icons.schedule),
           ],
         ),
         InkWell(
-            onTap: onTapSave,
+            onTap: eventsTapModel.onTapSave,
             child: CustomSvg(svgModel: SvgModel(image: Assets.imagesSendEvent)))
       ],
     );

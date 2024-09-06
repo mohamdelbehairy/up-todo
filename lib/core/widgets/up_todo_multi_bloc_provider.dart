@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../features/events/presentation/manager/get_events/get_events_cubit.dart';
 import '../../features/home/presentation/manager/bottom_navigation/bottom_navigation_cubit.dart';
 import '../../features/notes/data/repos/get_notes/get_notes_repo_impl.dart';
 import '../../features/notes/data/repos/store_note/store_note_repo_impl.dart';
@@ -24,6 +25,8 @@ class UpTodoMultiBlocProvider extends StatelessWidget {
             ..getHiddenNotes()
             ..getTrashNotes()),
       BlocProvider(create: (context) => StoreNoteCubit(StoreNotesRepoImpl())),
+      BlocProvider(
+          create: (context) => GetEventsCubit(GetNotesRepoImpl())..getEvents())
     ], child: child);
   }
 }

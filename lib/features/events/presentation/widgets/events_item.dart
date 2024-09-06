@@ -26,24 +26,22 @@ class EventsItem extends StatelessWidget {
                     : Colors.transparent),
             color: Colors.white,
             borderRadius: BorderRadius.circular(10)),
-        child: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                FittedBox(
-                    child: Text(noteItemModel.note.title,
-                        style: Styles.styleSemiBold15)),
-                const SizedBox(height: 8),
-                Text(noteItemModel.note.body, style: Styles.styleRegular13),
-                const SizedBox(height: 16),
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: Text('06 September, 2024 At 18:20',
-                      style: Styles.styleSemiBold14),
-                )
-              ],
-            )),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            FittedBox(
+                child: Text(noteItemModel.note.title,
+                    style: Styles.styleSemiBold15)),
+            const SizedBox(height: 8),
+            Text(noteItemModel.note.body, style: Styles.styleRegular13),
+            const SizedBox(height: 16),
+            Align(
+              alignment: Alignment.bottomRight,
+              child: Text('06 September, 2024 At 18:20',
+                  style: Styles.styleSemiBold14),
+            )
+          ],
+        ),
       ),
     );
   }

@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
-import 'package:up_todo/features/events/presentation/manager/store_events/store_events_cubit.dart';
-import 'package:up_todo/features/notes/data/models/note_model.dart';
+import 'package:up_todo/features/events/data/models/events_form_model.dart';
 import '../../../create_note/data/models/text_field_model.dart';
-import 'events_all_text_fields.dart';
-import 'events_selected_date_time_and_save_button.dart';
+import 'events_form.dart';
 
 class EventsTextFieldsAndButtonsSection extends StatefulWidget {
   const EventsTextFieldsAndButtonsSection({super.key});
@@ -77,31 +73,11 @@ class _EventsTextFieldsAndButtonsSectionState
             return null;
           }),
     ];
-    return BlocListener<StoreEventsCubit, StoreEventsState>(
-      listener: (context, state) {
-        if(state is StoreEventsSuccess){
-          GoRouter.of(context).pop();
-        }
-      },
-      child: Form(
-        key: formKey,
-        child: Column(
-          children: [
-            EventsTextFieldsSection(items: items),
-            const SizedBox(height: 16),
-            EventsSelectedDateTimeAndSaveButton(
-              onTapSave: () async {
-                if (formKey.currentState!.validate()) {
-                  formKey.currentState!.save();
-                  await BlocProvider.of<StoreEventsCubit>(context).storeEvents(
-                      noteModel:
-                          NoteModel(title: title.text, body: decsription.text));
-                }
-              },
-            ),
-          ],
-        ),
-      ),
-    );
+    return EventsForm(
+        eventsFormModel: EventsFormModel(
+            formKey: formKey,
+            items: items,
+            title: title,
+            decsription: decsription));
   }
 }
