@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:up_todo/core/utils/colors.dart';
 import 'package:up_todo/core/utils/styles.dart';
 
+import '../../../../core/utils/function/formatted_date.dart';
 import '../../../notes/data/models/note_item_model.dart';
 
 class EventsItem extends StatelessWidget {
@@ -37,7 +38,7 @@ class EventsItem extends StatelessWidget {
             const SizedBox(height: 16),
             Align(
               alignment: Alignment.bottomRight,
-              child: Text('06 September, 2024 At 18:20',
+              child: Text(formattedData(date: noteItemModel.note.dateTime),
                   style: Styles.styleSemiBold14),
             )
           ],

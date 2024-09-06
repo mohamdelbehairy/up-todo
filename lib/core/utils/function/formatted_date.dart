@@ -1,6 +1,10 @@
 import 'package:intl/intl.dart';
 
-String formattedData() {
-  final now = DateTime.now();
-  return DateFormat('dd MMMM, yyyy').format(now);
+String formattedData({DateTime? date}) {
+  if (date != null) {
+    final dateFormat = DateFormat('dd MMMM, yyyy');
+    final timeFormat = DateFormat('HH:mm');
+    return '${dateFormat.format(date)} At ${timeFormat.format(date)}';
+  }
+  return DateFormat('dd MMMM, yyyy').format(DateTime.now());
 }
