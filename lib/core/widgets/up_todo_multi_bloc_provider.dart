@@ -25,9 +25,11 @@ class UpTodoMultiBlocProvider extends StatelessWidget {
             ..getFavouriteNotes()
             ..getHiddenNotes()
             ..getTrashNotes()),
-      BlocProvider(create: (context) => StoreNoteCubit(StoreNotesRepoImpl())),
       BlocProvider(
-          create: (context) => GetEventsCubit(getIt.get<GetNotesRepoImpl>())..getEvents())
+          create: (context) => StoreNoteCubit(getIt.get<StoreNotesRepoImpl>())),
+      BlocProvider(
+          create: (context) =>
+              GetEventsCubit(getIt.get<GetNotesRepoImpl>())..getEvents()),
     ], child: child);
   }
 }
