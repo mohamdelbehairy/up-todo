@@ -4,6 +4,7 @@ import 'create_new_events_widget.dart';
 import 'events_list_view.dart';
 import 'events_table_calender.dart';
 import 'events_view_header.dart';
+import 'no_events_founded.dart';
 
 class EventsViewBody extends StatelessWidget {
   const EventsViewBody({super.key});
@@ -26,6 +27,7 @@ class EventsViewBody extends StatelessWidget {
               const SizedBox(height: 16),
               const CreateNewEventWidget(),
               const SizedBox(height: 16),
+              const NoEventsFounded(),
             ],
           ),
         ),
@@ -34,3 +36,4 @@ class EventsViewBody extends StatelessWidget {
     );
   }
 }
+

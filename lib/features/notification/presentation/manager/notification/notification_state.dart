@@ -7,3 +7,7 @@ final class NotificationInitial extends NotificationState {}
 final class InitNotificationSuccess extends NotificationState {}
 
 final class ShowNotificationSuccess extends NotificationState {}
+
+final class CancelNotificationSuccess extends NotificationState {}
+
+final class CancelAllNotificationSuccess extends NotificationState {}

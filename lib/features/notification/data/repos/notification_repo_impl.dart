@@ -70,4 +70,14 @@ class NotificationRepoImpl extends NotificationRepo {
         uiLocalNotificationDateInterpretation:
             UILocalNotificationDateInterpretation.absoluteTime);
   }
+  
+  @override
+  Future<void> cancelNotification({required int id}) async{
+    await _flutterLocalNotificationsPlugin.cancel(id);
+  }
+  
+  @override
+  Future<void> cancelAllNotification() async{
+   await _flutterLocalNotificationsPlugin.cancelAll();
+  }
 }

@@ -8,6 +8,8 @@ import '../../features/notes/data/repos/get_notes/get_notes_repo_impl.dart';
 import '../../features/notes/data/repos/store_note/store_note_repo_impl.dart';
 import '../../features/notes/presentation/manager/get_notes/get_notes_cubit.dart';
 import '../../features/notes/presentation/manager/store_note/store_note_cubit.dart';
+import '../../features/notification/data/repos/notification_repo_impl.dart';
+import '../../features/notification/presentation/manager/notification/notification_cubit.dart';
 import '../../features/onboarding/presentation/manager/on_boardring/on_boardring_cubit.dart';
 
 class UpTodoMultiBlocProvider extends StatelessWidget {
@@ -30,6 +32,8 @@ class UpTodoMultiBlocProvider extends StatelessWidget {
       BlocProvider(
           create: (context) =>
               GetEventsCubit(getIt.get<GetNotesRepoImpl>())..getEvents()),
+      BlocProvider(
+          create: (context) => NotificationCubit(NotificationRepoImpl())),
     ], child: child);
   }
 }

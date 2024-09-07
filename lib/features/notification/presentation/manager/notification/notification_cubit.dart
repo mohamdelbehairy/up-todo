@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../data/models/notification_model.dart';
 import '../../../data/repos/notification_repo.dart';
 
-
 part 'notification_state.dart';
 
 class NotificationCubit extends Cubit<NotificationState> {
@@ -20,5 +19,16 @@ class NotificationCubit extends Cubit<NotificationState> {
       {required NotificationModel notificationModel}) async {
     await _notificationRepo.showNotification(
         notificationModel: notificationModel);
+    emit(ShowNotificationSuccess());
+  }
+
+  Future<void> cancelNotification({required int id}) async {
+    await _notificationRepo.cancelNotification(id: id);
+    emit(CancelNotificationSuccess());
+  }
+
+  Future<void> cancelAllNotification() async {
+    await _notificationRepo.cancelAllNotification();
+    emit(CancelAllNotificationSuccess());
   }
 }

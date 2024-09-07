@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:up_todo/core/utils/function/formatted_date.dart';
 import 'package:up_todo/core/utils/styles.dart';
 
+import '../../../../core/utils/function/show_clear_all_events_dialog.dart';
 import '../../../../core/widgets/app_bar_circle_setting_button.dart';
 
 class EventsViewHeader extends StatelessWidget {
@@ -17,10 +18,13 @@ class EventsViewHeader extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text('Events', style: Styles.styleBold26),
-            AppBarCircleSettingButton(onTap: () {})
+            AppBarCircleSettingButton(onTap: () {
+              showClearAllEventsDialog(context);
+            })
           ],
         ),
       ],
     );
   }
 }
+

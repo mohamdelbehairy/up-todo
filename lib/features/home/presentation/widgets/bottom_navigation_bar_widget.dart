@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:up_todo/core/utils/app_router.dart';
 import 'package:up_todo/core/utils/colors.dart';
 import 'package:up_todo/core/utils/styles.dart';
 
+import '../../../events/presentation/manager/get_events/get_events_cubit.dart';
 import '../manager/bottom_navigation/bottom_navigation_cubit.dart';
 import 'custom_navigation_bar_item.dart';
 
@@ -35,6 +37,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
                 GoRouter.of(context).push(AppRouter.createNoteView);
               } else {
                 bottomNavigation.changeIndex(index);
+                context.read<GetEventsCubit>().listViewChangeIndex(-1);
               }
             },
             items: List.generate(bottomNavigation.bottomNavigationList.length,
