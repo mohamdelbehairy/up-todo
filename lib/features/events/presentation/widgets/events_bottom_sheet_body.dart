@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:up_todo/core/utils/function/setup_service_locator.dart';
 import 'package:up_todo/core/utils/styles.dart';
-import 'package:up_todo/features/events/presentation/manager/notification/notification_cubit.dart';
+import 'package:up_todo/features/notification/data/repos/notification_repo_impl.dart';
+import 'package:up_todo/features/notification/presentation/manager/notification/notification_cubit.dart';
 import 'package:up_todo/features/events/presentation/manager/store_events/store_events_cubit.dart';
-import '../../../../core/utils/service/notification_service.dart';
 import '../../../notes/data/repos/store_note/store_note_repo_impl.dart';
 import 'events_text_fields_and_button_section.dart';
 
@@ -19,7 +19,7 @@ class EventsBottomSheetBody extends StatelessWidget {
             create: (context) =>
                 StoreEventsCubit(getIt.get<StoreNotesRepoImpl>())),
         BlocProvider(
-            create: (context) => NotificationCubit(NotificationService())),
+            create: (context) => NotificationCubit(NotificationRepoImpl())),
       ],
       child: Padding(
         padding: EdgeInsets.only(

@@ -1,16 +1,17 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
+import '../models/notification_model.dart';
+import 'notification_repo.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 
-import '../../../features/events/data/models/notification_model.dart';
-
-class NotificationService {
+class NotificationRepoImpl extends NotificationRepo {
   final FlutterLocalNotificationsPlugin _flutterLocalNotificationsPlugin =
       FlutterLocalNotificationsPlugin();
 
   static void onTap(NotificationResponse details) {}
 
+  @override
   Future<void> initNotification() async {
     InitializationSettings initializationSettings =
         const InitializationSettings(
@@ -21,6 +22,7 @@ class NotificationService {
         onDidReceiveBackgroundNotificationResponse: onTap);
   }
 
+  @override
   Future<void> checkNotificationPermission() async {
     var isPermisions = await _flutterLocalNotificationsPlugin
         .resolvePlatformSpecificImplementation<
@@ -28,17 +30,14 @@ class NotificationService {
         ?.areNotificationsEnabled();
 
     if (isPermisions == null || !isPermisions) {
-      await requestNotificationPermission();
+      await _flutterLocalNotificationsPlugin
+          .resolvePlatformSpecificImplementation<
+              AndroidFlutterLocalNotificationsPlugin>()
+          ?.requestNotificationsPermission();
     }
   }
 
-  Future<void> requestNotificationPermission() async {
-    await _flutterLocalNotificationsPlugin
-        .resolvePlatformSpecificImplementation<
-            AndroidFlutterLocalNotificationsPlugin>()
-        ?.requestNotificationsPermission();
-  }
-
+  @override
   Future<void> showNotification(
       {required NotificationModel notificationModel}) async {
     tz.initializeTimeZones();
@@ -47,7 +46,6 @@ class NotificationService {
         "UpTodo", "UpTodo",
         importance: Importance.max,
         priority: Priority.high,
-        
         sound:
             RawResourceAndroidNotificationSound('sound.wav'.split('.').first));
 

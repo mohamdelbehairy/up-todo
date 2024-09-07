@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:up_todo/features/events/data/models/events_form_model.dart';
-import 'package:up_todo/features/events/presentation/manager/notification/notification_cubit.dart';
+import 'package:up_todo/features/notification/presentation/manager/notification/notification_cubit.dart';
 import 'package:up_todo/features/events/presentation/manager/store_events/store_events_cubit.dart';
 import '../../../create_note/data/models/text_field_model.dart';
 import '../manager/get_events/get_events_cubit.dart';
