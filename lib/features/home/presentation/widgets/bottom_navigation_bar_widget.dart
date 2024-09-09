@@ -38,6 +38,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
               } else {
                 bottomNavigation.changeIndex(index);
                 context.read<GetEventsCubit>().listViewChangeIndex(-1);
+                context.read<GetEventsCubit>().displayEvents.clear();
               }
             },
             items: List.generate(bottomNavigation.bottomNavigationList.length,

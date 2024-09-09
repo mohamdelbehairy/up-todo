@@ -6,4 +6,6 @@ final class GetEventsInitial extends GetEventsState {}
 
 final class GetEventsSuccess extends GetEventsState {}
 
+final class SearchEventsSuccess extends GetEventsState {}
+
 final class ChangeIndex extends GetEventsState {}

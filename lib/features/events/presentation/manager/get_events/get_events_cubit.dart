@@ -10,11 +10,24 @@ class GetEventsCubit extends Cubit<GetEventsState> {
   final GetNotesRepo _getNotesRepo;
 
   List<NoteModel> events = [];
+  List<NoteModel> displayEvents = [];
 
   int acvtiveIndex = -1;
   void getEvents() {
     events = _getNotesRepo.getNotes(Constants.kEvents);
     emit(GetEventsSuccess());
+  }
+
+  void searchEvents(String query) {
+    if (query.isEmpty) {
+      displayEvents = [];
+    } else {
+      displayEvents = events
+          .where(
+              (note) => note.title.toLowerCase().contains(query.toLowerCase()))
+          .toList();
+    }
+    emit(SearchEventsSuccess());
   }
 
   void listViewChangeIndex(int index) {
