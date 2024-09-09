@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:up_todo/core/utils/app_router.dart';
 import 'package:up_todo/core/utils/colors.dart';
 import 'package:up_todo/core/utils/styles.dart';
+import 'package:up_todo/features/search/presentation/manager/search/search_cubit.dart';
 
 import '../../../events/presentation/manager/get_events/get_events_cubit.dart';
 import '../manager/bottom_navigation/bottom_navigation_cubit.dart';
@@ -38,7 +39,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
               } else {
                 bottomNavigation.changeIndex(index);
                 context.read<GetEventsCubit>().listViewChangeIndex(-1);
-                context.read<GetEventsCubit>().displayEvents.clear();
+                context.read<SearchCubit>().displayNotes.clear();
               }
             },
             items: List.generate(bottomNavigation.bottomNavigationList.length,

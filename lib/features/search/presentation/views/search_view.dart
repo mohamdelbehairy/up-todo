@@ -10,4 +10,3 @@ class SearchView extends StatelessWidget {
     return const BuildView(child: SearchViewBody());
   }
 }
-

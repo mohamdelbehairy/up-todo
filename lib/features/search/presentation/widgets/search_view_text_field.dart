@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/widgets/search_text_field.dart';
 import '../../../create_note/data/models/text_field_model.dart';
-import '../../../events/presentation/manager/get_events/get_events_cubit.dart';
+import '../manager/search/search_cubit.dart';
 
 class SearchViewTextField extends StatefulWidget {
   const SearchViewTextField({super.key});
@@ -29,16 +29,18 @@ class _SearchViewTextFieldState extends State<SearchViewTextField> {
 
   @override
   Widget build(BuildContext context) {
-    var events = context.watch<GetEventsCubit>();
+    var notes = context.watch<SearchCubit>();
     return SearchTextField(
       textFieldModel: TextFieldModel(
           controller: _controller,
           onChanged: (value) {
-            events.searchEvents(value);
+            notes.searchNotes(value);
           },
           suffixTap: () {
             _controller.clear();
-            events.searchEvents('');
+            notes.searchNotes('');
+            context.read<SearchCubit>().gridViewAvtiveIndex = -1;
+            context.read<SearchCubit>().listViewAvtiveIndex = -1;
           }),
     );
   }
