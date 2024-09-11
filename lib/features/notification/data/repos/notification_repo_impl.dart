@@ -51,8 +51,8 @@ class NotificationRepoImpl extends NotificationRepo {
 
     NotificationDetails notificationDetails = NotificationDetails(
         android: android, iOS: const DarwinNotificationDetails());
-
     final String currentTimeZone = await FlutterTimezone.getLocalTimezone();
+
     tz.setLocalLocation(tz.getLocation(currentTimeZone));
 
     await _flutterLocalNotificationsPlugin.zonedSchedule(
@@ -70,14 +70,14 @@ class NotificationRepoImpl extends NotificationRepo {
         uiLocalNotificationDateInterpretation:
             UILocalNotificationDateInterpretation.absoluteTime);
   }
-  
+
   @override
-  Future<void> cancelNotification({required int id}) async{
+  Future<void> cancelNotification({required int id}) async {
     await _flutterLocalNotificationsPlugin.cancel(id);
   }
-  
+
   @override
-  Future<void> cancelAllNotification() async{
-   await _flutterLocalNotificationsPlugin.cancelAll();
+  Future<void> cancelAllNotification() async {
+    await _flutterLocalNotificationsPlugin.cancelAll();
   }
 }

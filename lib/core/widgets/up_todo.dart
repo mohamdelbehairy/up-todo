@@ -11,6 +11,7 @@ class UpTodo extends StatelessWidget {
   Widget build(BuildContext context) {
     return UpTodoMultiBlocProvider(
         child: MaterialApp.router(
+            title: 'UpTodo',
             theme: ThemeData(
                 useMaterial3: false,
                 scaffoldBackgroundColor: AppColors.backgroundColor),
