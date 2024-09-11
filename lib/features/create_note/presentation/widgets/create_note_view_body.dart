@@ -66,7 +66,7 @@ class _CreateNoteViewBodyState extends State<CreateNoteViewBody> {
             const SizedBox(height: 24),
             CreateNoteTextField(
                 textFieldModel: TextFieldModel(
-                    title: 'Page Title',
+                    title: 'Note Title',
                     controller: title,
                     validator: (value) {
                       if (value!.isEmpty) {
@@ -78,13 +78,13 @@ class _CreateNoteViewBodyState extends State<CreateNoteViewBody> {
                       }
                       return null;
                     })),
-            const SizedBox(height: 16),
+            // const SizedBox(height: 8),
             if (body.text.isNotEmpty ||
                 (title.text.isNotEmpty && title.text.length >= 5))
               CreateNoteTextField(
                   textFieldModel: TextFieldModel(
-                      title: 'Page Body',
-                      maxLines: body.text.length > 30 ? 4 : 2,
+                      title: 'Note Description',
+                      maxLines: body.text.length > 30 ? null : 2,
                       controller: body,
                       validator: (value) {
                         if (value!.length < 15 && title.text.length < 20) {

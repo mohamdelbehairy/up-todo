@@ -15,7 +15,13 @@ class CustomTextField extends StatelessWidget {
       controller: textFieldModel.controller,
       cursorColor: AppColors.secondaryColor,
       validator: textFieldModel.validator,
-      decoration: const InputDecoration(border: InputBorder.none),
+      decoration: InputDecoration(
+          border: InputBorder.none,
+          hintText: textFieldModel.title,
+          hintStyle:
+              Styles.styleBold26.copyWith(
+                fontSize: 20,
+                color: const Color(0xff979797))),
     );
   }
 }

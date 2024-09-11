@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:up_todo/core/utils/styles.dart';
-
 import '../../data/models/text_field_model.dart';
 import 'custom_text_field.dart';
 
@@ -13,10 +11,11 @@ class CreateNoteTextField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(textFieldModel.title,
-            style: Styles.styleBold26.copyWith(color: const Color(0xff979797))),
+        // Text(textFieldModel.title,
+        //     style: Styles.styleBold26.copyWith(color: const Color(0xff979797))),
         CustomTextField(
             textFieldModel: TextFieldModel(
+              title: textFieldModel.title,
                 maxLines: textFieldModel.maxLines,
                 controller: textFieldModel.controller,
                 validator: textFieldModel.validator)),
