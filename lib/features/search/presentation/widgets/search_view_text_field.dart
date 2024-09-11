@@ -5,39 +5,21 @@ import '../../../../core/widgets/search_text_field.dart';
 import '../../../create_note/data/models/text_field_model.dart';
 import '../manager/search/search_cubit.dart';
 
-class SearchViewTextField extends StatefulWidget {
-  const SearchViewTextField({super.key});
-
-  @override
-  State<SearchViewTextField> createState() => _SearchViewTextFieldState();
-}
-
-class _SearchViewTextFieldState extends State<SearchViewTextField> {
-  late TextEditingController _controller;
-
-  @override
-  void initState() {
-    _controller = TextEditingController();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
+class SearchViewTextField extends StatelessWidget {
+  const SearchViewTextField({super.key, required this.controller});
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
     var notes = context.watch<SearchCubit>();
     return SearchTextField(
       textFieldModel: TextFieldModel(
-          controller: _controller,
+          controller: controller,
           onChanged: (value) {
             notes.searchNotes(value);
           },
           suffixTap: () {
-            _controller.clear();
+            controller.clear();
             notes.searchNotes('');
             context.read<SearchCubit>().gridViewAvtiveIndex = -1;
             context.read<SearchCubit>().listViewAvtiveIndex = -1;
