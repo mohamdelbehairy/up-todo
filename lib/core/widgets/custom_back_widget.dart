@@ -15,9 +15,7 @@ class CustomBackWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Icon(Icons.arrow_back_ios, color: AppColors.secondaryColor),
-          Padding(
-            padding: const EdgeInsets.only(top: 4),
-            child: Text('Back', style: Styles.styleSemiBold14))
+          Text('Back', style: Styles.styleSemiBold14)
         ],
       ),
     );

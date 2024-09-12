@@ -31,12 +31,15 @@ class OnBoardringIndicatorAndTextAndButton extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Column(
           children: [
-            const SizedBox(height: 42),
+            const Expanded(child: SizedBox(height: 42)),
             CustomSmoothIndicator(onBoardringModel: onBoardringModel),
-            const SizedBox(height: 64),
-            Text(onBoardringModel.title,
-                textAlign: TextAlign.center, style: Styles.styleBold32),
-            const SizedBox(height: 32),
+            const Expanded(child: SizedBox(height: 64)),
+            FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text(onBoardringModel.title,
+                  textAlign: TextAlign.center, style: Styles.styleBold32),
+            ),
+            const Expanded(child: SizedBox(height: 32)),
             Text(onBoardringModel.description,
                 textAlign: TextAlign.center, style: Styles.styleRegular14),
             const Spacer(),

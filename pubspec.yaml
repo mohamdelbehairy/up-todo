@@ -30,6 +30,7 @@ environment:
 dependencies:
   cupertino_icons: ^1.0.8
   dartz: ^0.10.1
+  device_preview: ^1.2.0
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.6
@@ -103,7 +104,6 @@ flutter_launcher_icons:
   ios: true
   image_path: "assets/images/sticky-note.png"
   min_sdk_android: 21
-
 
 flutter_native_splash:
   color: "#f2f2f6"
