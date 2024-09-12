@@ -14,6 +14,7 @@ import '../../features/notification/data/repos/notification_repo_impl.dart';
 import '../../features/notification/presentation/manager/notification/notification_cubit.dart';
 import '../../features/onboarding/presentation/manager/on_boardring/on_boardring_cubit.dart';
 import '../../features/search/presentation/manager/search/search_cubit.dart';
+import '../../features/search/presentation/manager/search_result/search_result_cubit.dart';
 
 class UpTodoMultiBlocProvider extends StatelessWidget {
   const UpTodoMultiBlocProvider({super.key, required this.child});
@@ -42,6 +43,10 @@ class UpTodoMultiBlocProvider extends StatelessWidget {
               RemoveEventsCubit(getIt.get<RemoveNoteRepoImpl>())),
       BlocProvider(
           create: (context) => SearchCubit(getIt.get<GetNotesRepoImpl>())),
+      BlocProvider(
+          create: (context) => SearchResultCubit(
+              getIt.get<GetNotesRepoImpl>(), getIt.get<RemoveNoteRepoImpl>())
+            ..getRecentSearch())
     ], child: child);
   }
 }

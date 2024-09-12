@@ -37,7 +37,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
             } else {
               bottomNavigation.changeIndex(index);
               context.read<GetEventsCubit>().listViewChangeIndex(-1);
-              context.read<SearchCubit>().displayNotes.clear();
+              context.read<SearchCubit>().displayAllNotes.clear();
             }
           },
           items: List.generate(bottomNavigation.bottomNavigationList.length,

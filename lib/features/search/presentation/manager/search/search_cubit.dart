@@ -9,22 +9,22 @@ class SearchCubit extends Cubit<SearchState> {
   SearchCubit(this._getNotesRepo) : super(SearchInitial());
   final GetNotesRepo _getNotesRepo;
 
-  List<NoteModel> notes = [];
-  List<NoteModel> displayNotes = [];
+  List<NoteModel> allNotes = [];
+  List<NoteModel> displayAllNotes = [];
 
 
-  void searchNotes(String query) {
-    notes = _getNotesRepo.getNotes(Constants.kAllNotes);
+  void searchAllNotes(String query) {
+    allNotes = _getNotesRepo.getNotes(Constants.kAllNotes);
 
     if (query.isEmpty) {
-      displayNotes = [];
+      displayAllNotes = [];
     } else {
-      displayNotes = notes
+      displayAllNotes = allNotes
           .where(
               (note) => note.title.toLowerCase().contains(query.toLowerCase()))
           .toList();
     }
-    emit(SearchEventsSuccess());
+    emit(SearchALlNotesSuccess());
   }
 
   int gridViewAvtiveIndex = -1;

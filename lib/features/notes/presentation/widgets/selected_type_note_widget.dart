@@ -4,7 +4,8 @@ import '../manager/selected_type_note/selected_type_note_cubit.dart';
 import 'selected_type_note_item.dart';
 
 class SelectedTypeNoteWidget extends StatelessWidget {
-  const SelectedTypeNoteWidget({super.key});
+  const SelectedTypeNoteWidget({super.key, required this.controller});
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +28,7 @@ class SelectedTypeNoteWidget extends StatelessWidget {
                 selectedTypeNote.changeSelectedTypeNote(index);
                 selectedTypeNote.listViewChangeIndex(-1);
                 selectedTypeNote.gradeViewChangeIndex(-1);
+                controller.clear();
               },
               child: SelectedTypeNoteItem(
                   isActive: selectedTypeNote.selectedIndex == index,

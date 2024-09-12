@@ -1,7 +1,9 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:up_todo/core/widgets/search_text_field.dart';
 
 import '../../../create_note/data/models/text_field_model.dart';
+import '../../../search/presentation/manager/search/search_cubit.dart';
 import 'selected_type_note_widget.dart';
 import 'show_notes.dart';
 
@@ -33,15 +35,22 @@ class _SearchAndSelectedAndShowNotesSectionState
 
   @override
   Widget build(BuildContext context) {
+    var notes = context.watch<SearchCubit>();
     return Column(
       children: [
         SearchTextField(
             textFieldModel: TextFieldModel(
-          controller: _controller,
-        )),
+                controller: _controller,
+                onChanged: (value) {
+                  notes.searchAllNotes(value);
+                },
+                suffixTap: () {
+                  _controller.clear();
+                  // notes.searchAllNotes('');
+                })),
         const SizedBox(height: 24),
-        const SelectedTypeNoteWidget(),
-        if (_controller.text.isEmpty) const ShowNotes(),
+        SelectedTypeNoteWidget(controller: _controller),
+        ShowNotes(controller: _controller),
       ],
     );
   }

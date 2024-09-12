@@ -16,11 +16,11 @@ class SearchViewTextField extends StatelessWidget {
       textFieldModel: TextFieldModel(
           controller: controller,
           onChanged: (value) {
-            notes.searchNotes(value);
+            notes.searchAllNotes(value);
           },
           suffixTap: () {
             controller.clear();
-            notes.searchNotes('');
+            notes.searchAllNotes('');
             context.read<SearchCubit>().gridViewAvtiveIndex = -1;
             context.read<SearchCubit>().listViewAvtiveIndex = -1;
           }),

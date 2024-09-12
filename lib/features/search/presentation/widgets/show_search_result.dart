@@ -13,12 +13,12 @@ class ShowSearchResult extends StatelessWidget {
     var notes = context.read<SearchCubit>();
     return BlocBuilder<SearchCubit, SearchState>(
       builder: (context, state) {
-        if (notes.displayNotes.isNotEmpty) {
-          final List<NoteModel> gridNotes = notes.displayNotes.length > 2
-              ? notes.displayNotes.sublist(0, 2)
-              : notes.displayNotes;
-          final List<NoteModel> listNotes = notes.displayNotes.length > 2
-              ? notes.displayNotes.sublist(2)
+        if (notes.displayAllNotes.isNotEmpty) {
+          final List<NoteModel> gridNotes = notes.displayAllNotes.length > 2
+              ? notes.displayAllNotes.sublist(0, 2)
+              : notes.displayAllNotes;
+          final List<NoteModel> listNotes = notes.displayAllNotes.length > 2
+              ? notes.displayAllNotes.sublist(2)
               : [];
           return Column(
             children: [
