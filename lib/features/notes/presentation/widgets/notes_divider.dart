@@ -6,6 +6,6 @@ class NotesDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Divider(thickness: .5, color: color ?? Colors.grey);
+    return  Divider(thickness: .2, color: color ?? Colors.grey);
   }
 }

@@ -48,9 +48,9 @@ class Styles {
       fontSize: getResponsiveFontSize(fontSize: 15),
       color: const Color(0xff1C2121));
 
-  static TextStyle styleLight12 = GoogleFonts.nunitoSans(
+  static TextStyle styleLight16 = GoogleFonts.nunitoSans(
       fontWeight: FontWeight.w300,
-      fontSize: getResponsiveFontSize(fontSize: 12),
+      fontSize: getResponsiveFontSize(fontSize: 16),
       color: const Color(0xff1C2121));
 
   static TextStyle styleSemiBold9 = GoogleFonts.nunitoSans(

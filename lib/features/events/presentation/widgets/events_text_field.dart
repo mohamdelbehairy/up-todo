@@ -17,10 +17,10 @@ class EventsTextField extends StatelessWidget {
       decoration: InputDecoration(
         hintText: textFieldModel.title,
         border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(4),
+            borderRadius: BorderRadius.circular(8),
             borderSide: const BorderSide(color: AppColors.primaryColor)),
         focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(4),
+            borderRadius: BorderRadius.circular(8),
             borderSide: const BorderSide(color: AppColors.primaryColor)),
       ),
     );

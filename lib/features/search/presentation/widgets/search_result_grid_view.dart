@@ -38,7 +38,7 @@ class SearchResultGridView extends StatelessWidget {
                     await context.read<StoreNoteCubit>().storeNote(
                         noteModel: gridNotes[index],
                         boxName: Constants.kRecentSearch);
-                    allNotes.getRecentSearche();
+                    allNotes.getRecentSearch();
                   }
                 },
                 onLongTap: () {},

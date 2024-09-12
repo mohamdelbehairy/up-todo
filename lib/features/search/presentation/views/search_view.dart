@@ -15,7 +15,7 @@ class SearchView extends StatelessWidget {
     return BlocProvider(
       create: (context) => SearchResultCubit(
           getIt.get<GetNotesRepoImpl>(), getIt.get<RemoveNoteRepoImpl>())
-        ..getRecentSearche(),
+        ..getRecentSearch(),
       child: const BuildView(child: SearchViewBody()),
     );
   }

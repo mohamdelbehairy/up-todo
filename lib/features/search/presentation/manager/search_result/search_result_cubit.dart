@@ -15,7 +15,7 @@ class SearchResultCubit extends Cubit<SearchResultState> {
 
   List<NoteModel> allNotes = [];
   List<NoteModel> recentSearch = [];
-  void getRecentSearche() async {
+  void getRecentSearch() async {
     allNotes = _getNotesRepo.getNotes(Constants.kRecentSearch);
     recentSearch = allNotes.isEmpty
         ? []
@@ -27,14 +27,14 @@ class SearchResultCubit extends Cubit<SearchResultState> {
 
   Future<void> removeAllRecentSearch() async {
     await _removeNoteRepo.removeAllNotes(boxName: Constants.kRecentSearch);
-    getRecentSearche();
+    getRecentSearch();
     emit(RemoveAllSearchResult());
   }
 
   Future<void> removeRecentSearch({required int index}) async {
     await _removeNoteRepo.removeNote(
         noteID: index, boxName: Constants.kRecentSearch);
-    getRecentSearche();
+    getRecentSearch();
     emit(RemoveSearchResult());
   }
 

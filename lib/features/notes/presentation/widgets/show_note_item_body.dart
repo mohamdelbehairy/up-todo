@@ -18,9 +18,9 @@ class ShowNoteItemBody extends StatelessWidget {
         children: [
           FittedBox(
               child: Text(noteItemModel.note.title,
-                  style: Styles.styleSemiBold15)),
+                  style: Styles.styleSemiBold15.copyWith(fontSize: 16))),
           const NotesDivider(),
-          Text(noteItemModel.note.body, style: Styles.styleLight12)
+          Text(noteItemModel.note.body, style: Styles.styleLight16)
         ],
       ),
     );

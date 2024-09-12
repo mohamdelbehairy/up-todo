@@ -38,7 +38,7 @@ class SearchResultListView extends StatelessWidget {
                         await context.read<StoreNoteCubit>().storeNote(
                             noteModel: listNotes[index],
                             boxName: Constants.kRecentSearch);
-                        allNotes.getRecentSearche();
+                        allNotes.getRecentSearch();
                       }
                     },
                     onLongTap: () {},
