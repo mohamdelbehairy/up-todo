@@ -10,7 +10,7 @@ BottomNavigationBarItem customNavigationBarItem(
     required bool activeIndex}) {
   return BottomNavigationBarItem(
       icon: Padding(
-        padding: const EdgeInsets.only(bottom: 4.0),
+        padding: const EdgeInsets.only(bottom: 4.0,top: 4.0),
         child: CustomSvg(
             svgModel: SvgModel(
                 image: bottomNavigationModel.image,
