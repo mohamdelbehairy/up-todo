@@ -20,36 +20,50 @@ class OnBoardringItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Column(
-          children: [
-            Expanded(child: OnBoardringImage(image: onBoardringModel.image)),
-            Expanded(
-                child: OnBoardringIndicatorAndTextAndButton(
-                    onBoardringModel: onBoardringModel,
-                    pageController: pageController))
-          ],
-        ),
-        if (onBoardringModel.image != Assets.imagesOnBoardingThree)
-          Positioned(
-              right: 24.0,
-              top: 60,
-              child: InkWell(
-                  onTap: () async {
-                    GoRouter.of(context).go(AppRouter.homeView);
-                    final prefs = await SharedPreferences.getInstance();
-                    prefs.setString(Constants.kOnBoarding, 'true');
-                  },
-                  child: Text('Skip', style: Styles.styleSemiBold14))),
-        if (onBoardringModel.image != Assets.imagesOnBoardingOne)
-          Positioned(
-              left: 24.0,
-              top: 58,
-              child: CustomBackWidget(
-                  onTap: () => pageController.previousPage(
-                      duration: const Duration(milliseconds: 500),
-                      curve: Curves.easeIn)))
+    return CustomScrollView(
+      slivers: [
+        SliverFillRemaining(
+          hasScrollBody: onBoardringModel.image != Assets.imagesOnBoardingTwo
+              ? false
+              : true,
+          child: Stack(
+            children: [
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Expanded(
+                      child: OnBoardringImage(image: onBoardringModel.image)),
+                  Expanded(
+                      child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: OnBoardringIndicatorAndTextAndButton(
+                        onBoardringModel: onBoardringModel,
+                        pageController: pageController),
+                  ))
+                ],
+              ),
+              if (onBoardringModel.image != Assets.imagesOnBoardingThree)
+                Positioned(
+                    right: 24.0,
+                    top: 60,
+                    child: InkWell(
+                        onTap: () async {
+                          GoRouter.of(context).go(AppRouter.homeView);
+                          final prefs = await SharedPreferences.getInstance();
+                          prefs.setString(Constants.kOnBoarding, 'true');
+                        },
+                        child: Text('Skip', style: Styles.styleSemiBold14))),
+              if (onBoardringModel.image != Assets.imagesOnBoardingOne)
+                Positioned(
+                    left: 24.0,
+                    top: 58,
+                    child: CustomBackWidget(
+                        onTap: () => pageController.previousPage(
+                            duration: const Duration(milliseconds: 500),
+                            curve: Curves.easeIn)))
+            ],
+          ),
+        )
       ],
     );
   }

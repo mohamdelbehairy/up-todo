@@ -36,7 +36,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
           onPageChanged: (value) {},
           children: List.generate(3, (index) {
             return OnBoardringItem(
-              pageController: _pageController,
+                pageController: _pageController,
                 onBoardringModel:
                     context.read<OnBoardringCubit>().onBoardringLiat[index]);
           }),
