@@ -41,7 +41,7 @@ Future<void> onTapTrash(
         noteModel: NoteModel(
             title: noteModel.title, body: noteModel.body, isTrash: true),
         boxName: Constants.kTrashNotes);
-    if (selectedIndex == 0) {
+    if (selectedIndex <= 0) {
       await removeNote.removeNote(noteID: index, boxName: Constants.kAllNotes);
     }
     CustomFlutterToast.showCustomFlutterToast(

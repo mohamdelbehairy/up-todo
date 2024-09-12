@@ -10,7 +10,7 @@ class NoNotesFoundWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 70,
-      width: 346,
+      width: MediaQuery.sizeOf(context).width,
       decoration: BoxDecoration(
           color: noNotesFoundModel.backgroundColor ?? Colors.white,
           borderRadius: BorderRadius.circular(10)),

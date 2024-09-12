@@ -36,17 +36,23 @@ class EventsItem extends StatelessWidget {
             const SizedBox(height: 8),
             Text(noteItemModel.note.body, style: Styles.styleRegular13),
             const SizedBox(height: 16),
-            Row(
-              mainAxisAlignment:
-                  noteItemModel.note.dateTime!.isBefore(DateTime.now())
-                      ? MainAxisAlignment.spaceBetween
-                      : MainAxisAlignment.end,
-              children: [
-                if (noteItemModel.note.dateTime!.isBefore(DateTime.now()))
-                  Text('Completed', style: Styles.styleSemiBold14),
-                Text(formattedData(date: noteItemModel.note.dateTime),
-                    style: Styles.styleSemiBold14),
-              ],
+            FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Row(
+                mainAxisAlignment:
+                    noteItemModel.note.dateTime!.isBefore(DateTime.now())
+                        ? MainAxisAlignment.spaceBetween
+                        : MainAxisAlignment.end,
+                children: [
+                  if (noteItemModel.note.dateTime!.isBefore(DateTime.now()))
+                    Text('Completed', style: Styles.styleSemiBold14),
+                  if (noteItemModel.note.dateTime!.isBefore(DateTime.now()))
+                    const SizedBox(width: 24),
+                  Text(
+                      formattedData(date: noteItemModel.note.dateTime),
+                      style: Styles.styleSemiBold14),
+                ],
+              ),
             )
           ],
         ),
