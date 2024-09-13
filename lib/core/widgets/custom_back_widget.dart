@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:up_todo/core/utils/colors.dart';
-import 'package:up_todo/core/utils/styles.dart';
 
 class CustomBackWidget extends StatelessWidget {
   const CustomBackWidget({super.key, required this.onTap});
@@ -11,13 +10,7 @@ class CustomBackWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Icon(Icons.arrow_back_ios, color: AppColors.secondaryColor),
-          Text('Back', style: Styles.styleSemiBold14)
-        ],
-      ),
+      child: const Icon(Icons.arrow_back_ios, color: AppColors.secondaryColor),
     );
   }
 }

@@ -49,50 +49,52 @@ class _CreateNoteViewBodyState extends State<CreateNoteViewBody> {
           GoRouter.of(context).pop(context);
         }
       },
-      child: Form(
-        key: formKey,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 32),
-            CreateNoteAppBar(onTap: () async {
-              if (formKey.currentState!.validate()) {
-                formKey.currentState!.save();
-                await context.read<StoreNoteCubit>().storeNote(
-                    noteModel: NoteModel(title: title.text, body: body.text),
-                    boxName: Constants.kAllNotes);
-              }
-            }),
-            const SizedBox(height: 24),
-            CreateNoteTextField(
-                textFieldModel: TextFieldModel(
-                    title: 'Note Title',
-                    controller: title,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return 'Please enter a title';
-                      } else if (value.length < 5) {
-                        return 'Title must be at least 5 characters long';
-                      } else if (value.length > 20) {
-                        return 'Title must be at most 15 characters long';
-                      }
-                      return null;
-                    })),
-            // const SizedBox(height: 8),
-            if (body.text.isNotEmpty ||
-                (title.text.isNotEmpty && title.text.length >= 5))
+      child: SingleChildScrollView(
+        child: Form(
+          key: formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 32),
+              CreateNoteAppBar(onTap: () async {
+                if (formKey.currentState!.validate()) {
+                  formKey.currentState!.save();
+                  await context.read<StoreNoteCubit>().storeNote(
+                      noteModel: NoteModel(title: title.text, body: body.text),
+                      boxName: Constants.kAllNotes);
+                }
+              }),
+              const SizedBox(height: 24),
               CreateNoteTextField(
                   textFieldModel: TextFieldModel(
-                      title: 'Note Description',
-                      maxLines: body.text.length > 30 ? null : 2,
-                      controller: body,
+                      title: 'Note Title',
+                      controller: title,
                       validator: (value) {
-                        if (value!.length < 15 && title.text.length < 20) {
-                          return 'Body must be at least 15 characters long';
+                        if (value!.isEmpty) {
+                          return 'Please enter a title';
+                        } else if (value.length < 5) {
+                          return 'Title must be at least 5 characters long';
+                        } else if (value.length > 20) {
+                          return 'Title must be at most 15 characters long';
                         }
                         return null;
                       })),
-          ],
+              // const SizedBox(height: 8),
+              if (body.text.isNotEmpty ||
+                  (title.text.isNotEmpty && title.text.length >= 5))
+                CreateNoteTextField(
+                    textFieldModel: TextFieldModel(
+                        title: 'Note Description',
+                        maxLines: body.text.length > 30 ? null : 2,
+                        controller: body,
+                        validator: (value) {
+                          if (value!.length < 15 && title.text.length < 20) {
+                            return 'Body must be at least 15 characters long';
+                          }
+                          return null;
+                        })),
+            ],
+          ),
         ),
       ),
     );
