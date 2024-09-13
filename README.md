@@ -1,16 +1,14 @@
-# up_todo
+# UpTodo
 
-A new Flutter project.
+#### UpTodo is an advanced notes application built with Flutter. It allows users to store notes, manage events, and receive notifications when an event is due. The app also features search functionality for notes and uses Flutter Local Notifications for alerts. State management is handled using Cubit, and the MVVM pattern is followed for clean and maintainable code.Data storage is efficiently managed using Hive.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- #### Note Storage: Create, edit, and delete notes effortlessly.
+- #### Event Management: Create events with specific dates, and receive notifications when an event is due.
+- #### Local Notifications: Uses Flutter Local Notifications to send alerts.
+- #### Advanced Search: Search for notes
+- #### Data Storage: Utilizes Hive for fast and efficient local data storage.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
