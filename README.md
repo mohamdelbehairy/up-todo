@@ -6,9 +6,9 @@
 
 ## Features
 
-- #### Note Storage: Create, edit, and delete notes effortlessly.
-- #### Event Management: Create events with specific dates, and receive notifications when an event is due.
-- #### Local Notifications: Uses Flutter Local Notifications to send alerts.
-- #### Advanced Search: Search for notes
-- #### Data Storage: Utilizes Hive for fast and efficient local data storage.
+- ##### Note Storage: Create, edit, and delete notes effortlessly.
+- ##### Event Management: Create events with specific dates, and receive notifications when an event is due.
+- ##### Local Notifications: Uses Flutter Local Notifications to send alerts.
+- ##### Advanced Search: Search for notes
+- ##### Data Storage: Utilizes Hive for fast and efficient local data storage.
 
