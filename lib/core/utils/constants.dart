@@ -5,6 +5,7 @@ class Constants {
   static const kTrashNotes = 'TrashNotes';
   static const kEvents = 'Events';
   static const kRecentSearch = 'RecentSearch';
+  static const kOpenFirstTime = 'OpenFirstTime';
 
   static const kOnBoarding = 'onBoarding';
 }

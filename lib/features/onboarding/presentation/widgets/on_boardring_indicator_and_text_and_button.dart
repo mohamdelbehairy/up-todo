@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:up_todo/core/utils/colors.dart';
-import 'package:up_todo/core/utils/constants.dart';
 import 'package:up_todo/core/utils/styles.dart';
 
-import '../../../../core/utils/app_router.dart';
 import '../../data/models/on_boardring_model.dart';
+import '../manager/open_first_time/open_first_time_cubit.dart';
 import 'custom_smooth_indicator.dart';
 
 class OnBoardringIndicatorAndTextAndButton extends StatelessWidget {
@@ -46,9 +44,7 @@ class OnBoardringIndicatorAndTextAndButton extends StatelessWidget {
             InkWell(
               onTap: () async {
                 if (pageController.page?.toInt() == 2) {
-                  GoRouter.of(context).go(AppRouter.homeView);
-                  final prefs = await SharedPreferences.getInstance();
-                  prefs.setString(Constants.kOnBoarding, 'true');
+                  await context.read<OpenFirstTimeCubit>().storeOpenFirstTime();
                 } else {
                   pageController.nextPage(
                       duration: const Duration(milliseconds: 500),

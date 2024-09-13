@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:up_todo/core/utils/app_router.dart';
-import 'package:up_todo/core/utils/constants.dart';
+
+import '../../../onboarding/presentation/manager/open_first_time/open_first_time_cubit.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -25,7 +26,7 @@ class _SplashViewState extends State<SplashView> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('assets/images/splash.png',height: 100),
+            Image.asset('assets/images/splash.png', height: 100),
             const SizedBox(height: 25),
           ],
         ),
@@ -34,10 +35,10 @@ class _SplashViewState extends State<SplashView> {
   }
 
   void navigation() async {
-    final prefs = await SharedPreferences.getInstance();
-    final onBoarding = prefs.getString(Constants.kOnBoarding);
+    var onBoarding =
+        await context.read<OpenFirstTimeCubit>().checkOpenFirstTime();
     Future.delayed(const Duration(seconds: 2), () {
-      if (onBoarding == null) {
+      if (!onBoarding) {
         // ignore: use_build_context_synchronously
         GoRouter.of(context).go(AppRouter.onBoardingView);
       } else {

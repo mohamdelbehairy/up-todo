@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:up_todo/core/utils/function/setup_service_locator.dart';
+import 'package:up_todo/features/onboarding/data/repos/open_first_time_repo_impl.dart';
+import 'package:up_todo/features/onboarding/presentation/manager/open_first_time/open_first_time_cubit.dart';
 
 import '../../features/events/presentation/manager/get_events/get_events_cubit.dart';
 import '../../features/events/presentation/manager/remove_events/remove_events_cubit.dart';
@@ -22,6 +24,8 @@ class UpTodoMultiBlocProvider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(providers: [
+      BlocProvider(
+          create: (context) => OpenFirstTimeCubit(OpenFirstTimeRepoImpl())),
       BlocProvider(create: (context) => OnBoardringCubit()),
       BlocProvider(create: (context) => BottomNavigationCubit()),
       BlocProvider(
