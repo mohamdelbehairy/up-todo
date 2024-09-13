@@ -6,6 +6,7 @@ import 'package:up_todo/core/utils/constants.dart';
 import 'package:up_todo/core/widgets/custom_flutter_toast.dart';
 import 'package:up_todo/features/notes/data/models/note_model.dart';
 
+import '../../../../search/presentation/manager/search/search_cubit.dart';
 import '../../manager/get_notes/get_notes_cubit.dart';
 import '../../manager/remove_note/remove_note_cubit.dart';
 import '../../manager/selected_type_note/selected_type_note_cubit.dart';
@@ -19,6 +20,7 @@ Future<void> onTapTrash(
   var storeNote = context.read<StoreNoteCubit>();
 
   if (noteModel.isTrash) {
+    context.read<SearchCubit>().searchTrashNotes('');
     await storeNote.storeNote(
         noteModel: NoteModel(
             title: noteModel.title, body: noteModel.body, isTrash: false),
@@ -29,6 +31,8 @@ Future<void> onTapTrash(
             message: 'Note removed from trash',
             backgroundColor: AppColors.trashNotesColor));
   } else {
+    context.read<SearchCubit>().searchAllNotes('');
+    context.read<SearchCubit>().searchHiddenNotes('');
     if (noteModel.isFavourite) {
       await removeNote.removeNote(
           noteID: index, boxName: Constants.kFavouriteNotes);

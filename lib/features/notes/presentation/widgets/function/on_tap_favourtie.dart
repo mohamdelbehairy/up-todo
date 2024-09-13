@@ -8,6 +8,7 @@ import 'package:up_todo/features/notes/presentation/manager/get_notes/get_notes_
 import 'package:up_todo/features/notes/presentation/manager/remove_note/remove_note_cubit.dart';
 import 'package:up_todo/features/notes/presentation/manager/store_note/store_note_cubit.dart';
 import 'package:up_todo/features/notes/presentation/manager/update_note/update_note_cubit.dart';
+import 'package:up_todo/features/search/presentation/manager/search/search_cubit.dart';
 
 import '../../../../../core/models/flutter_toast_model.dart';
 import '../../manager/selected_type_note/selected_type_note_cubit.dart';
@@ -22,6 +23,7 @@ Future<void> onTapFavourite(
   var storeNote = context.read<StoreNoteCubit>();
 
   if (noteModel.isFavourite) {
+    context.read<SearchCubit>().searchFavoriteNotes('');
     await removeNote.removeNote(
         noteID: index, boxName: Constants.kFavouriteNotes);
     await updateNote.updateNotesWithIndex(

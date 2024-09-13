@@ -38,7 +38,7 @@ class _SearchViewBodyState extends State<SearchViewBody> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 24),
+          const SizedBox(height: 32),
           CustomAppBar(
               appBarModel: AppBarModel(
                   title: 'Notes',

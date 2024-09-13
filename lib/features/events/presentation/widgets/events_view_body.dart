@@ -18,7 +18,7 @@ class EventsViewBody extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 24),
+              const SizedBox(height: 32),
               const EventsViewHeader(),
               const SizedBox(height: 24),
               const EventsTableCalender(),

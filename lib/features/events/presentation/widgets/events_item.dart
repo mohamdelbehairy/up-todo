@@ -32,27 +32,33 @@ class EventsItem extends StatelessWidget {
           children: [
             FittedBox(
                 child: Text(noteItemModel.note.title,
-                    style: Styles.styleSemiBold15)),
+                    style: Styles.styleSemiBold15.copyWith(fontSize: 16))),
             const SizedBox(height: 8),
-            Text(noteItemModel.note.body, style: Styles.styleRegular13),
+            Text(noteItemModel.note.body,
+                style: Styles.styleRegular13.copyWith(fontSize: 14)),
             const SizedBox(height: 16),
-            FittedBox(
-              fit: BoxFit.scaleDown,
-              child: Row(
-                mainAxisAlignment:
-                    noteItemModel.note.dateTime!.isBefore(DateTime.now())
-                        ? MainAxisAlignment.spaceBetween
-                        : MainAxisAlignment.end,
-                children: [
-                  if (noteItemModel.note.dateTime!.isBefore(DateTime.now()))
-                    Text('Completed', style: Styles.styleSemiBold14),
-                  if (noteItemModel.note.dateTime!.isBefore(DateTime.now()))
-                    const SizedBox(width: 24),
-                  Text(
-                      formattedData(date: noteItemModel.note.dateTime),
-                      style: Styles.styleSemiBold14),
-                ],
-              ),
+            Row(
+              mainAxisAlignment:
+                  noteItemModel.note.dateTime!.isBefore(DateTime.now())
+                      ? MainAxisAlignment.spaceBetween
+                      : MainAxisAlignment.end,
+              children: [
+                if (noteItemModel.note.dateTime!.isBefore(DateTime.now()))
+                  Flexible(
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text('Completed', style: Styles.styleSemiBold14.copyWith(fontSize: 15))),
+                  ),
+                if (noteItemModel.note.dateTime!.isBefore(DateTime.now()))
+                  const SizedBox(width: 24),
+                Flexible(
+                  child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                    child: Text(formattedData(date: noteItemModel.note.dateTime),
+                        style: Styles.styleSemiBold14),
+                  ),
+                ),
+              ],
             )
           ],
         ),

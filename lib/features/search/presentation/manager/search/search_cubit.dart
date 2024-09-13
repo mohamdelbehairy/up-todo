@@ -12,6 +12,14 @@ class SearchCubit extends Cubit<SearchState> {
   List<NoteModel> allNotes = [];
   List<NoteModel> displayAllNotes = [];
 
+  List<NoteModel> favoriteNotes = [];
+  List<NoteModel> displayFavoriteNotes = [];
+
+  List<NoteModel> hiddenNotes = [];
+  List<NoteModel> displayHiddenNotes = [];
+
+  List<NoteModel> trashNotes = [];
+  List<NoteModel> displayTrashNotes = [];
 
   void searchAllNotes(String query) {
     allNotes = _getNotesRepo.getNotes(Constants.kAllNotes);
@@ -24,7 +32,49 @@ class SearchCubit extends Cubit<SearchState> {
               (note) => note.title.toLowerCase().contains(query.toLowerCase()))
           .toList();
     }
-    emit(SearchALlNotesSuccess());
+    emit(SearchAllNotesSuccess());
+  }
+
+  void searchFavoriteNotes(String query) {
+    favoriteNotes = _getNotesRepo.getNotes(Constants.kFavouriteNotes);
+
+    if (query.isEmpty) {
+      displayFavoriteNotes = [];
+    } else {
+      displayFavoriteNotes = favoriteNotes
+          .where(
+              (note) => note.title.toLowerCase().contains(query.toLowerCase()))
+          .toList();
+    }
+    emit(SearchFavoriteNotesSuccess());
+  }
+
+  void searchHiddenNotes(String query) {
+    hiddenNotes = _getNotesRepo.getNotes(Constants.kHiddenNotes);
+
+    if (query.isEmpty) {
+      displayHiddenNotes = [];
+    } else {
+      displayHiddenNotes = hiddenNotes
+          .where(
+              (note) => note.title.toLowerCase().contains(query.toLowerCase()))
+          .toList();
+    }
+    emit(SearchHiddenNotesSuccess());
+  }
+
+  void searchTrashNotes(String query) {
+    trashNotes = _getNotesRepo.getNotes(Constants.kTrashNotes);
+
+    if (query.isEmpty) {
+      displayTrashNotes = [];
+    } else {
+      displayTrashNotes = trashNotes
+          .where(
+              (note) => note.title.toLowerCase().contains(query.toLowerCase()))
+          .toList();
+    }
+    emit(SearchTrashNotesSuccess());
   }
 
   int gridViewAvtiveIndex = -1;

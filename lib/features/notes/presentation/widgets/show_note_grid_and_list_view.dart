@@ -35,17 +35,12 @@ class ShowNotesGridAndListView extends StatelessWidget {
             note = notes.recentNotes;
           }
         } else {
-          if (selectedIndex.selectedIndex == 0) {
-            note = searchNotes.displayAllNotes;
-          } else if (selectedIndex.selectedIndex == 1) {
-            // note = notes.favouriteNotes;
-             note = [];
+          if (selectedIndex.selectedIndex == 1) {
+            note = searchNotes.displayFavoriteNotes;
           } else if (selectedIndex.selectedIndex == 2) {
-            // note = notes.hiddenNotes;
-             note = [];
+            note = searchNotes.displayHiddenNotes;
           } else if (selectedIndex.selectedIndex == 3) {
-            // note = notes.trashNotes;
-            note = [];
+            note = searchNotes.displayTrashNotes;
           } else {
             note = searchNotes.displayAllNotes;
           }

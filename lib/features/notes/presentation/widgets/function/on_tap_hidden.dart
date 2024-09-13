@@ -5,6 +5,7 @@ import 'package:up_todo/core/utils/colors.dart';
 import 'package:up_todo/core/utils/constants.dart';
 import 'package:up_todo/features/notes/data/models/note_model.dart';
 import '../../../../../core/widgets/custom_flutter_toast.dart';
+import '../../../../search/presentation/manager/search/search_cubit.dart';
 import '../../manager/get_notes/get_notes_cubit.dart';
 import '../../manager/remove_note/remove_note_cubit.dart';
 import '../../manager/store_note/store_note_cubit.dart';
@@ -16,6 +17,7 @@ Future<void> onTapHidden(
   var storeNote = context.read<StoreNoteCubit>();
 
   if (noteModel.isHidden) {
+    context.read<SearchCubit>().searchHiddenNotes('');
     await storeNote.storeNote(
         noteModel: NoteModel(
             title: noteModel.title, body: noteModel.body, isHidden: false),
@@ -30,6 +32,7 @@ Future<void> onTapHidden(
             message: 'Note removed from hidden',
             backgroundColor: AppColors.hiddenNotesColor));
   } else {
+    context.read<SearchCubit>().searchAllNotes('');
     if (noteModel.isFavourite) {
       await storeNote.storeNote(
           noteModel: NoteModel(

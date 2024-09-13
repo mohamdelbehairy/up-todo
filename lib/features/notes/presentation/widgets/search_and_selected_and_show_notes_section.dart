@@ -4,6 +4,7 @@ import 'package:up_todo/core/widgets/search_text_field.dart';
 
 import '../../../create_note/data/models/text_field_model.dart';
 import '../../../search/presentation/manager/search/search_cubit.dart';
+import '../manager/selected_type_note/selected_type_note_cubit.dart';
 import 'selected_type_note_widget.dart';
 import 'show_notes.dart';
 
@@ -36,17 +37,27 @@ class _SearchAndSelectedAndShowNotesSectionState
   @override
   Widget build(BuildContext context) {
     var notes = context.watch<SearchCubit>();
+    var selectedIndex = context.read<SelectedTypeNoteCubit>();
+
     return Column(
       children: [
         SearchTextField(
             textFieldModel: TextFieldModel(
                 controller: _controller,
                 onChanged: (value) {
-                  notes.searchAllNotes(value);
+                  if (selectedIndex.selectedIndex == 1) {
+                    notes.searchFavoriteNotes(value);
+                  } else if (selectedIndex.selectedIndex == 2) {
+                    notes.searchHiddenNotes(value);
+                  } else if (selectedIndex.selectedIndex == 3) {
+                    notes.searchTrashNotes(value);
+                  } else {
+                    notes.searchAllNotes(value);
+                  }
                 },
                 suffixTap: () {
                   _controller.clear();
-                  // notes.searchAllNotes('');
+                  notes.searchAllNotes('');
                 })),
         const SizedBox(height: 24),
         SelectedTypeNoteWidget(controller: _controller),

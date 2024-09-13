@@ -54,7 +54,7 @@ class _CreateNoteViewBodyState extends State<CreateNoteViewBody> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 24),
+            const SizedBox(height: 32),
             CreateNoteAppBar(onTap: () async {
               if (formKey.currentState!.validate()) {
                 formKey.currentState!.save();
