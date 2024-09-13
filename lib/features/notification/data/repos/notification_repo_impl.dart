@@ -51,10 +51,10 @@ class NotificationRepoImpl extends NotificationRepo {
 
     NotificationDetails notificationDetails = NotificationDetails(
         android: android, iOS: const DarwinNotificationDetails());
+
     final String currentTimeZone = await FlutterTimezone.getLocalTimezone();
 
     tz.setLocalLocation(tz.getLocation(currentTimeZone));
-
     await _flutterLocalNotificationsPlugin.zonedSchedule(
         notificationModel.id,
         notificationModel.title,

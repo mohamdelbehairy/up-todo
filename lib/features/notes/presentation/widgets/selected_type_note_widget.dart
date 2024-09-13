@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../manager/get_notes/get_notes_cubit.dart';
 import '../manager/selected_type_note/selected_type_note_cubit.dart';
 import 'selected_type_note_item.dart';
 
@@ -10,6 +11,7 @@ class SelectedTypeNoteWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var selectedTypeNote = context.watch<SelectedTypeNoteCubit>();
+
     return SizedBox(
       height: 100 + 16 + 16,
       child: GridView.builder(
@@ -29,6 +31,15 @@ class SelectedTypeNoteWidget extends StatelessWidget {
                 selectedTypeNote.listViewChangeIndex(-1);
                 selectedTypeNote.gradeViewChangeIndex(-1);
                 controller.clear();
+                if (selectedTypeNote.selectedIndex == 1) {
+                  context.read<GetNotesCubit>().getFavouriteNotes();
+                }
+                if (selectedTypeNote.selectedIndex == 2) {
+                  context.read<GetNotesCubit>().getHiddenNotes();
+                }
+                if (selectedTypeNote.selectedIndex == 3) {
+                  context.read<GetNotesCubit>().getTrashNotes();
+                }
               },
               child: SelectedTypeNoteItem(
                   isActive: selectedTypeNote.selectedIndex == index,
