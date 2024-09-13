@@ -38,8 +38,12 @@ class OnBoardringIndicatorAndTextAndButton extends StatelessWidget {
                   textAlign: TextAlign.center, style: Styles.styleBold32),
             ),
             const Expanded(child: SizedBox(height: 32)),
-            Text(onBoardringModel.description,
-                textAlign: TextAlign.center, style: Styles.styleRegular14),
+            FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text(onBoardringModel.description,
+                  textAlign: TextAlign.center,
+                  style: Styles.styleRegular14.copyWith(fontSize: 16)),
+            ),
             const Spacer(),
             InkWell(
               onTap: () async {
