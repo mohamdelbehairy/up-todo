@@ -37,7 +37,7 @@ class _SplashViewState extends State<SplashView> {
   void navigation() async {
     var onBoarding =
         await context.read<OpenFirstTimeCubit>().checkOpenFirstTime();
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 1), () {
       if (!onBoarding) {
         // ignore: use_build_context_synchronously
         GoRouter.of(context).go(AppRouter.onBoardingView);

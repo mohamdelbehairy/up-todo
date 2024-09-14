@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:up_todo/core/utils/colors.dart';
 import 'package:up_todo/core/utils/styles.dart';
 
 import '../../../create_note/data/models/text_field_model.dart';
@@ -13,7 +14,7 @@ class EventsTextField extends StatelessWidget {
     return TextFormField(
       controller: textFieldModel.controller,
       validator: textFieldModel.validator,
-      style: Styles.styleBold17,
+      style: Styles.styleBold17.copyWith(color: AppColors.primaryColor),
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.only(left: 8),
         hintText: textFieldModel.title,
