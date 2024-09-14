@@ -20,7 +20,7 @@ class ShowNoteItemBody extends StatelessWidget {
               child: Text(noteItemModel.note.title,
                   style: Styles.styleSemiBold15.copyWith(fontSize: 16))),
           const NotesDivider(),
-          Text(noteItemModel.note.body, style: Styles.styleLight16)
+          Text(noteItemModel.note.body, style: Styles.styleSemiBold15)
         ],
       ),
     );

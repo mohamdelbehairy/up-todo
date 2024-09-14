@@ -9,61 +9,40 @@ import '../../manager/get_notes/get_notes_cubit.dart';
 import '../../manager/remove_note/remove_note_cubit.dart';
 import '../../manager/selected_type_note/selected_type_note_cubit.dart';
 import '../../manager/store_note/store_note_cubit.dart';
-import '../../manager/update_note/update_note_cubit.dart';
 
 Future<void> onTapAllFavourite(BuildContext context) async {
   var selectedIndex = context.read<SelectedTypeNoteCubit>().selectedIndex;
   var getNotes = context.read<GetNotesCubit>();
   var removeAllNotes = context.read<RemoveNoteCubit>();
-  var updateAllNotes = context.read<UpdateNoteCubit>();
   var storeNotes = context.read<StoreNoteCubit>();
 
-  if (selectedIndex == 0 && getNotes.allNotes.isNotEmpty) {
-    for (var key in getNotes.getNotesToMap(Constants.kAllNotes).keys) {
-      var note = getNotes.getNotesToMap(Constants.kAllNotes)[key] as NoteModel;
-      if (!note.isFavourite) {
-        await updateAllNotes.updateNotesWithKey(
-            key: key,
-            boxName: Constants.kAllNotes,
-            noteModel: NoteModel(
-                title: note.title,
-                body: note.body,
-                isFavourite: true,
-                isHidden: note.isHidden,
-                isTrash: note.isTrash));
-        await storeNotes.storeNote(
-            noteModel: NoteModel(
-                title: note.title,
-                body: note.body,
-                isFavourite: true,
-                isHidden: note.isHidden,
-                isTrash: note.isTrash),
-            boxName: Constants.kFavouriteNotes);
-        CustomFlutterToast.showCustomFlutterToast(
-            flutterToastModel: FlutterToastModel(
-                message: 'All notes added to favourite',
-                backgroundColor: AppColors.allNotesColor));
-      } else {
-        CustomFlutterToast.showCustomFlutterToast(
-            flutterToastModel: FlutterToastModel(
-                message: 'All notes are already in favourite',
-                backgroundColor: AppColors.allNotesColor));
+  if (selectedIndex == 0) {
+    if (getNotes.allNotes.isNotEmpty) {
+      for (var element in getNotes.allNotes) {
+        if (!element.isFavourite) {
+          await storeNotes.storeNote(
+              noteModel: NoteModel(
+                  title: element.title, body: element.body, isFavourite: true),
+              boxName: Constants.kFavouriteNotes);
+          await removeAllNotes.removeAllNotes(boxName: Constants.kAllNotes);
+          CustomFlutterToast.showCustomFlutterToast(
+              flutterToastModel: FlutterToastModel(
+                  message: 'All notes added to favourite',
+                  backgroundColor: AppColors.allNotesColor));
+        }
       }
+    } else {
+      CustomFlutterToast.showCustomFlutterToast(
+          flutterToastModel: FlutterToastModel(
+              message: 'All notes are empty',
+              backgroundColor: AppColors.allNotesColor));
     }
   } else {
     if (getNotes.favouriteNotes.isNotEmpty) {
-      for (var key in getNotes.getNotesToMap(Constants.kAllNotes).keys) {
-        var note =
-            getNotes.getNotesToMap(Constants.kAllNotes)[key] as NoteModel;
-        await updateAllNotes.updateNotesWithKey(
-            key: key,
-            boxName: Constants.kAllNotes,
-            noteModel: NoteModel(
-                title: note.title,
-                body: note.body,
-                isFavourite: false,
-                isHidden: note.isHidden,
-                isTrash: note.isTrash));
+      for (var element in getNotes.favouriteNotes) {
+        await storeNotes.storeNote(
+            noteModel: NoteModel(title: element.title, body: element.body),
+            boxName: Constants.kAllNotes);
       }
       await removeAllNotes.removeAllNotes(boxName: Constants.kFavouriteNotes);
       CustomFlutterToast.showCustomFlutterToast(

@@ -30,8 +30,10 @@ class ShowNotesListView extends StatelessWidget {
                     selectedIndex.gradeViewChangeIndex(-1);
                   },
                   onLongTap: () {
-                    showCustomNotesDialog(context,
-                        noteModel: notes[index], index: index + 2);
+                    if (selectedIndex.selectedIndex >= 0) {
+                      showCustomNotesDialog(context,
+                          noteModel: notes[index], index: index + 2);
+                    }
                   },
                   isActive: selectedIndex.listViewAvtiveIndex == index),
             ));

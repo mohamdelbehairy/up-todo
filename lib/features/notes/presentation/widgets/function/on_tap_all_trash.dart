@@ -10,34 +10,15 @@ import '../../manager/get_notes/get_notes_cubit.dart';
 import '../../manager/remove_note/remove_note_cubit.dart';
 import '../../manager/selected_type_note/selected_type_note_cubit.dart';
 import '../../manager/store_note/store_note_cubit.dart';
-import '../../manager/update_note/update_note_cubit.dart';
 
 Future<void> onTapAllTrash(BuildContext context) async {
   var selectedIndex = context.read<SelectedTypeNoteCubit>().selectedIndex;
   var getNotes = context.read<GetNotesCubit>();
   var removeAllNotes = context.read<RemoveNoteCubit>();
-  var updateAllNotes = context.read<UpdateNoteCubit>();
   var storeNotes = context.read<StoreNoteCubit>();
 
   if (selectedIndex == 0) {
     if (getNotes.allNotes.isNotEmpty) {
-      for (var key in getNotes.getNotesToMap(Constants.kAllNotes).keys) {
-        var note =
-            getNotes.getNotesToMap(Constants.kAllNotes)[key] as NoteModel;
-        if (note.isFavourite) {
-          await updateAllNotes.updateNotesWithKey(
-              key: key,
-              boxName: Constants.kAllNotes,
-              noteModel: NoteModel(
-                  title: note.title,
-                  body: note.body,
-                  isFavourite: false,
-                  isHidden: note.isHidden,
-                  isTrash: note.isTrash));
-          await removeAllNotes.removeAllNotes(
-              boxName: Constants.kFavouriteNotes);
-        }
-      }
       for (var note in getNotes.allNotes) {
         await storeNotes.storeNote(
             noteModel: NoteModel(

@@ -15,7 +15,7 @@ void showCustomNotesDialog(BuildContext context,
   var selectedIndex = context.read<SelectedTypeNoteCubit>().selectedIndex;
 
   List<CustomDialogModel> items = [
-    if (selectedIndex <= 1)
+    if ((selectedIndex <= 0 && !noteModel.isFavourite) || selectedIndex == 1)
       CustomDialogModel(
           title: noteModel.isFavourite ? 'Unfavourite' : 'Favourite',
           backgroundColor: const Color(0xffF7CE45),
