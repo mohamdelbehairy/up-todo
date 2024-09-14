@@ -12,3 +12,8 @@
 - ##### Advanced Search: Search for notes
 - ##### Data Storage: Utilizes Hive for fast and efficient local data storage.
 
+## preview app:
+https://github.com/user-attachments/assets/0c70dbee-704d-4e8e-a2f3-8aca9a05d044
+
+
+
