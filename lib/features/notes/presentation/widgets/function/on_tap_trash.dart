@@ -53,7 +53,9 @@ Future<void> onTapTrash(
             message: 'Note added to trash',
             backgroundColor: selectedIndex == 0
                 ? AppColors.allNotesColor
-                : AppColors.hiddenNotesColor));
+                : selectedIndex == 1
+                    ? AppColors.favouriteNotesColor
+                    : AppColors.hiddenNotesColor));
   }
   getNotes.getFavouriteNotes();
   getNotes.getHiddenNotes();

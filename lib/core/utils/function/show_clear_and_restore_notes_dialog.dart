@@ -34,7 +34,7 @@ void showClearAndRestoreNotesDialog(BuildContext context) {
             GoRouter.of(context).pop();
             await onTapAllHidden(context);
           }),
-    if (selectedIndex != 1)
+    // if (selectedIndex != 1)
       CustomDialogModel(
           title: selectedIndex == 3 ? 'Restore all notes' : 'Trash all notes',
           backgroundColor: const Color(0xffEB4D3D),

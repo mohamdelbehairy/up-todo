@@ -40,6 +40,29 @@ Future<void> onTapAllTrash(BuildContext context) async {
               message: 'All notes are empty',
               backgroundColor: AppColors.allNotesColor));
     }
+  } else if (selectedIndex == 1) {
+    if (getNotes.favouriteNotes.isNotEmpty) {
+      for (var note in getNotes.favouriteNotes) {
+        await storeNotes.storeNote(
+            noteModel: NoteModel(
+                title: note.title,
+                body: note.body,
+                isFavourite: false,
+                isHidden: false,
+                isTrash: true),
+            boxName: Constants.kTrashNotes);
+        await removeAllNotes.removeAllNotes(boxName: Constants.kFavouriteNotes);
+      }
+      CustomFlutterToast.showCustomFlutterToast(
+          flutterToastModel: FlutterToastModel(
+              message: 'All notes added to trash',
+              backgroundColor: AppColors.favouriteNotesColor));
+    } else {
+      CustomFlutterToast.showCustomFlutterToast(
+          flutterToastModel: FlutterToastModel(
+              message: 'All notes are empty',
+              backgroundColor: AppColors.favouriteNotesColor));
+    }
   } else if (selectedIndex == 2) {
     if (getNotes.hiddenNotes.isNotEmpty) {
       for (var note in getNotes.hiddenNotes) {

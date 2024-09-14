@@ -33,7 +33,7 @@ void showCustomNotesDialog(BuildContext context,
             GoRouter.of(context).pop();
             await onTapHidden(context, noteModel, index);
           }),
-    if (selectedIndex != 1)
+    // if (selectedIndex != 1)
       CustomDialogModel(
           title: noteModel.isTrash ? 'Restore' : 'Trash',
           backgroundColor: const Color(0xffEB4D3D),

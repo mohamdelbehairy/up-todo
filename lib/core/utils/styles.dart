@@ -73,8 +73,8 @@ class Styles {
       fontSize: getResponsiveFontSize(fontSize: 17),
       color: const Color(0xff1C2121));
 
-  static TextStyle styleItalic17 = GoogleFonts.nunitoSans(
-      fontSize: getResponsiveFontSize(fontSize: 17),
+  static TextStyle styleItalic20 = GoogleFonts.nunitoSans(
+      fontSize: getResponsiveFontSize(fontSize: 20),
       fontStyle: FontStyle.italic,
       color: const Color(0xff1C2121));
 

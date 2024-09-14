@@ -19,7 +19,7 @@ class NoNotesFoundWidget extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.only(left: 16),
           child: Text(noNotesFoundModel.text,
-              style: noNotesFoundModel.style ?? Styles.styleItalic17),
+              style: noNotesFoundModel.style ?? Styles.styleItalic20),
         ),
       ),
     );
