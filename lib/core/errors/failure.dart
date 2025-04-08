@@ -27,9 +27,7 @@ class HiveFailure extends Failure {
         return 'Error deleting from Hive box';
       case HiveErrorType.transactionError:
         return 'Error during Hive transaction';
-      default:
-        return 'An unexpected Hive error occurred';
-    }
+      }
   }
 }
 

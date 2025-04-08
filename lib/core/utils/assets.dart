@@ -26,6 +26,10 @@ class Assets {
   /// assets/images/hidden.svg
   static const String imagesHidden = "assets/images/hidden.svg";
 
+  /// Assets for imagesLogo
+  /// assets/images/logo.png
+  static const String imagesLogo = "assets/images/logo.png";
+
   /// Assets for imagesNotes
   /// assets/images/notes.svg
   static const String imagesNotes = "assets/images/notes.svg";
@@ -51,12 +55,20 @@ class Assets {
   static const String imagesSendEvent = "assets/images/send_event.svg";
 
   /// Assets for imagesSplash
-  /// assets/images/splash.svg
-  static const String imagesSplash = "assets/images/splash.svg";
+  /// assets/images/splash.png
+  static const String imagesSplash = "assets/images/splash.png";
+
+  /// Assets for imagesSplashAs
+  /// assets/images/splash_as.svg
+  static const String imagesSplashAs = "assets/images/splash_as.svg";
 
   /// Assets for imagesSqureCreateEvent
   /// assets/images/squre_create_event.svg
   static const String imagesSqureCreateEvent = "assets/images/squre_create_event.svg";
+
+  /// Assets for imagesStickyNote
+  /// assets/images/sticky-note.png
+  static const String imagesStickyNote = "assets/images/sticky-note.png";
 
   /// Assets for imagesTrash
   /// assets/images/trash.svg

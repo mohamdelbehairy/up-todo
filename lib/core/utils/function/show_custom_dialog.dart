@@ -9,6 +9,7 @@ Future<Object?> showCustomDialog(
     context: context,
     barrierLabel: "",
     barrierDismissible: true,
+    // ignore: deprecated_member_use
     barrierColor: Colors.black.withOpacity(0.5),
     transitionDuration: const Duration(milliseconds: 700),
     pageBuilder: (_, __, ___) {

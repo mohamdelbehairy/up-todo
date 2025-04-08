@@ -17,11 +17,15 @@ class AppColors {
 
  
   static final allNotesColorBackground =
+      // ignore: deprecated_member_use
       const Color(0xff8E8E92).withOpacity(0.1);
   static final favouriteNotesColorBackground =
+      // ignore: deprecated_member_use
       const Color(0xffF7CE45).withOpacity(0.3);
   static final hiddenNotesColorBackground =
+      // ignore: deprecated_member_use
       const Color(0xff4E94F8).withOpacity(0.1);
   static final trashNotesColorBackground =
+      // ignore: deprecated_member_use
       const Color(0xffEB4D3D).withOpacity(0.1);
 }

@@ -26,6 +26,7 @@ class SearchTextField extends StatelessWidget {
                 ? GestureDetector(
                     onTap: textFieldModel.suffixTap,
                     child: Icon(Icons.close,
+                        // ignore: deprecated_member_use
                         color: AppColors.primaryColor.withOpacity(.6)))
                 : null,
             hintText: 'Search',

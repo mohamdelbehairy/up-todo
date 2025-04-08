@@ -23,6 +23,7 @@ class EventsViewBody extends StatelessWidget {
               const SizedBox(height: 24),
               const EventsTableCalender(),
               const SizedBox(height: 12),
+              // ignore: deprecated_member_use
               NotesDivider(color: Colors.grey.withOpacity(.45)),
               const SizedBox(height: 16),
               const CreateNewEventWidget(),

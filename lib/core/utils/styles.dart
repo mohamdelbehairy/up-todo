@@ -31,11 +31,13 @@ class Styles {
   static TextStyle styleRegular13 = GoogleFonts.nunito(
       fontWeight: FontWeight.w400,
       fontSize: getResponsiveFontSize(fontSize: 13),
+      // ignore: deprecated_member_use
       color: const Color(0xff3C3C43).withOpacity(.6));
 
   static TextStyle styleRegularOpacity17 = GoogleFonts.nunitoSans(
       fontWeight: FontWeight.w400,
       fontSize: getResponsiveFontSize(fontSize: 17.68),
+      // ignore: deprecated_member_use
       color: const Color(0xff1C2121).withOpacity(.6));
 
   static TextStyle styleBold15 = GoogleFonts.nunitoSans(
