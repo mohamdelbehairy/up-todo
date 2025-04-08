@@ -1,96 +1,111 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class Styles {
-  static TextStyle styleBold32 = GoogleFonts.nunitoSans(
+  static TextStyle styleBold32 = TextStyle(
+      fontFamily: 'NunitoSans',
       fontWeight: FontWeight.bold,
       fontSize: getResponsiveFontSize(fontSize: 32.81),
       color: const Color(0xff1C2121));
 
-  static TextStyle styleRegular14 = GoogleFonts.nunitoSans(
+  static TextStyle styleRegular14 = TextStyle(
+      fontFamily: 'NunitoSans',
       fontWeight: FontWeight.w400,
       fontSize: getResponsiveFontSize(fontSize: 14.96),
       color: const Color(0xff1C2121));
 
-  static TextStyle styleBold17 = GoogleFonts.nunitoSans(
+  static TextStyle styleBold17 = TextStyle(
+      fontFamily: 'NunitoSans',
       fontWeight: FontWeight.bold,
       fontSize: getResponsiveFontSize(fontSize: 17),
       color: Colors.white);
 
-  static TextStyle styleSemiBold14 = GoogleFonts.nunitoSans(
+  static TextStyle styleSemiBold14 = TextStyle(
+      fontFamily: 'NunitoSans',
       fontWeight: FontWeight.w600,
       fontSize: getResponsiveFontSize(fontSize: 14.58),
       color: const Color(0xff007AFF));
 
-  static TextStyle styleBold26 = GoogleFonts.nunitoSans(
+  static TextStyle styleBold26 = TextStyle(
+      fontFamily: 'NunitoSans',
       fontWeight: FontWeight.bold,
       fontSize: getResponsiveFontSize(fontSize: 26),
       color: const Color(0xff1C2121));
 
-  static TextStyle styleRegular13 = GoogleFonts.nunito(
+  static TextStyle styleRegular13 = TextStyle(
+      fontFamily: 'NunitoSans',
       fontWeight: FontWeight.w400,
       fontSize: getResponsiveFontSize(fontSize: 13),
-      // ignore: deprecated_member_use
-      color: const Color(0xff3C3C43).withOpacity(.6));
+      color: const Color(0xff3C3C43).withValues(alpha: .6));
 
-  static TextStyle styleRegularOpacity17 = GoogleFonts.nunitoSans(
+  static TextStyle styleRegularOpacity17 = TextStyle(
+      fontFamily: 'NunitoSans',
       fontWeight: FontWeight.w400,
       fontSize: getResponsiveFontSize(fontSize: 17.68),
-      // ignore: deprecated_member_use
-      color: const Color(0xff1C2121).withOpacity(.6));
+      color: const Color(0xff1C2121).withValues(alpha: .6));
 
-  static TextStyle styleBold15 = GoogleFonts.nunitoSans(
+  static TextStyle styleBold15 = TextStyle(
+      fontFamily: 'NunitoSans',
       fontWeight: FontWeight.bold,
       fontSize: getResponsiveFontSize(fontSize: 15.62),
       color: Colors.black);
 
-  static TextStyle styleSemiBold15 = GoogleFonts.nunitoSans(
+  static TextStyle styleSemiBold15 = TextStyle(
+      fontFamily: 'NunitoSans',
       fontWeight: FontWeight.w600,
       fontSize: getResponsiveFontSize(fontSize: 15),
       color: const Color(0xff1C2121));
 
-  static TextStyle styleLight16 = GoogleFonts.nunitoSans(
+  static TextStyle styleLight16 = TextStyle(
+      fontFamily: 'NunitoSans',
       fontWeight: FontWeight.w300,
       fontSize: getResponsiveFontSize(fontSize: 16),
       color: const Color(0xff1C2121));
 
-  static TextStyle styleSemiBold9 = GoogleFonts.nunitoSans(
+  static TextStyle styleSemiBold9 = TextStyle(
+      fontFamily: 'NunitoSans',
       fontWeight: FontWeight.w600,
       fontSize: getResponsiveFontSize(fontSize: 8.9),
       color: const Color(0xff1C2121));
 
-  static TextStyle styleSemiBold16 = GoogleFonts.nunitoSans(
+  static TextStyle styleSemiBold16 = TextStyle(
+      fontFamily: 'NunitoSans',
       fontWeight: FontWeight.w600,
       fontSize: getResponsiveFontSize(fontSize: 16.52),
       color: const Color(0xff828282));
 
-  static TextStyle styleRegular12 = GoogleFonts.nunitoSans(
+  static TextStyle styleRegular12 = TextStyle(
+      fontFamily: 'NunitoSans',
       fontWeight: FontWeight.w400,
       fontSize: getResponsiveFontSize(fontSize: 12),
       color: const Color(0xff1C2121));
 
-  static TextStyle styleRegular17 = GoogleFonts.nunitoSans(
+  static TextStyle styleRegular17 = TextStyle(
+      fontFamily: 'NunitoSans',
       fontWeight: FontWeight.w400,
       fontSize: getResponsiveFontSize(fontSize: 17),
       color: const Color(0xff1C2121));
 
-  static TextStyle styleItalic20 = GoogleFonts.nunitoSans(
+  static TextStyle styleItalic20 = TextStyle(
+      fontFamily: 'NunitoSans',
       fontSize: getResponsiveFontSize(fontSize: 20),
       fontStyle: FontStyle.italic,
       color: const Color(0xff1C2121));
 
-  static TextStyle styleBold40 = GoogleFonts.nunitoSans(
+  static TextStyle styleBold40 = TextStyle(
+      fontFamily: 'NunitoSans',
       fontWeight: FontWeight.bold,
       fontSize: getResponsiveFontSize(fontSize: 17),
       color: const Color(0xff1C2121));
 
-  static TextStyle styleSaveButton = GoogleFonts.nunitoSans(
+  static TextStyle styleSaveButton = TextStyle(
+      fontFamily: 'NunitoSans',
       fontWeight: FontWeight.w400,
       fontSize: getResponsiveFontSize(fontSize: 14.58),
       color: Colors.white);
 
-  static TextStyle styleRegular15 = GoogleFonts.nunitoSans(
+  static TextStyle styleRegular15 = TextStyle(
+      fontFamily: 'NunitoSans',
       fontWeight: FontWeight.w400,
       fontSize: getResponsiveFontSize(fontSize: 15),
       color: const Color(0xff1C2121));
