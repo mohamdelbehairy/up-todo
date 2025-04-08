@@ -4,7 +4,7 @@
     <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
     <application
-        android:label="UpTodo"
+        android:label="upTodo"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity

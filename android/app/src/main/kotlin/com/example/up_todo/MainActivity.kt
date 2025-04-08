@@ -1,4 +1,4 @@
-package com.example.up_todo
+package com.android.upTodo.eg
 
 import io.flutter.embedding.android.FlutterActivity
 
